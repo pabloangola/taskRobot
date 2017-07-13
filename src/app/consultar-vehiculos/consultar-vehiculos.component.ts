@@ -9,7 +9,7 @@ export class ConsultarVehiculosComponent implements OnInit {
 
   constructor() { }
 
-  data = [];
+  vehiculos = [];
 
   ngOnInit() {
 
@@ -24,7 +24,7 @@ export class ConsultarVehiculosComponent implements OnInit {
       "año":"2015",
       "sitio":"Bogota"
     }
-    this.data.push(vehiculo);
+    this.vehiculos.push(vehiculo);
   }
 
 }

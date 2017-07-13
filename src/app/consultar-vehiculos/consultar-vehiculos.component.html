@@ -81,10 +81,11 @@
                   </div>
                 </div>
               </div>
-              <h5>Vehiculos del Cliente</h5>
-              <div class="row">
+              
+              <div class="row" *ngIf="vehiculos.size > 0">
+                <h5>Vehiculos del Cliente</h5>
                 <div class="input-field col s12">
-                  <table class="responsive-table  striped ">
+                  <table class="responsive-table  striped " >
                     <thead>
                       <tr>
                         <th>Placa</th>
@@ -96,37 +97,25 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>ADL-109</td>
-                        <td>ML500</td>
-                        <td>Carretera</td>
-                        <td>Mercedes-Bendz</td>
-                        <td>2015</td>
-                        <td>Bogota</td>
-                      </tr>
-                      <tr>
-                        <td>ADL-109</td>
-                        <td>ML500</td>
-                        <td>Carretera</td>
-                        <td>Mercedes-Bendz</td>
-                        <td>2015</td>
-                        <td>Bogota</td>
-                      </tr>
-                      <tr>
-                        <td>ADL-109</td>
-                        <td>ML500</td>
-                        <td>Carretera</td>
-                        <td>Mercedes-Bendz</td>
-                        <td>2015</td>
-                        <td>Bogota</td>
-                      </tr>
-                      <tr>
-                        <td>ADL-109</td>
-                        <td>ML500</td>
-                        <td>Carretera</td>
-                        <td>Mercedes-Bendz</td>
-                        <td>2015</td>
-                        <td>Bogota</td>
+                      <tr *ngFor="let vehiculo of vehiculos">
+                        <td>
+                          vehiculo.placa
+                        </td>
+                        <td>
+                          vehiculo.modelo
+                        </td>
+                        <td>
+                          vehiculo.tipo
+                        </td>
+                        <td>
+                          vehiculo.marca
+                        </td>
+                        <td>
+                          vehiculo.año
+                        </td>
+                        <td>
+                          vehiculo.sitio
+                        </td>
                       </tr>
                     </tbody>
                   </table>
