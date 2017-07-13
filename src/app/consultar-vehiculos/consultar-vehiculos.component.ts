@@ -9,7 +9,22 @@ export class ConsultarVehiculosComponent implements OnInit {
 
   constructor() { }
 
+  data = [];
+
   ngOnInit() {
+
+  }
+
+  searchData(){
+    var vehiculo = {
+      "placa":"VGE756",
+      "modelo":"FG21",
+      "tipo":"Carretera",
+      "marca":"Mercedez-Bendz",
+      "año":"2015",
+      "sitio":"Bogota"
+    }
+    this.data.push(vehiculo);
   }
 
 }
