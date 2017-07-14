@@ -12,13 +12,13 @@ export class ComparendoService {
 
   urlBase = "http://192.168.1.113:8080"
 
-  getComparendo(params): Observable<Comment[]> {
+  getComparendo(params): Observable<Comparendo[]> {
 
     let body = JSON.stringify(params);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(this.urlBase+"/comparendos",params,options)
+    return this.http.post(this.urlBase+"/comparendos",body,options)
       .map((res: Response) => res.json() as Comparendo[])
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }

@@ -3,7 +3,7 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import { ComparendoService} from '../services/comparendo.service';
+import { ComparendoService } from '../services/comparendo.service';
 import { Comparendo } from '../dto/comparendo';
 
 @Component({
@@ -15,11 +15,11 @@ export class EstadoCuentaComponent implements OnInit {
 
   placas = [];
   placa: string;
-  comparendos:Comparendo[];
+  comparendos: Comparendo[];
 
   baseUrl: string;
 
-  constructor(private comparendoService:ComparendoService) { }
+  constructor(private comparendoService: ComparendoService) { }
 
   incluirPlaca() {
     this.placas.push(this.placa);
@@ -33,8 +33,8 @@ export class EstadoCuentaComponent implements OnInit {
 
     let body = { "tipo": 4, "numero": "8909039388" }
 
-    this.comparendoService.getComparendo(body).subscribe();
-    
+    this.comparendoService.getComparendo(body)
+      .subscribe(res => this.comparendos = res);
   }
 
   private getHeaders() {
