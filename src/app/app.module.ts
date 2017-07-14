@@ -52,6 +52,11 @@ const appRoutes: Routes = [
     path: 'consultarVehiculos',
     component: ConsultarVehiculosComponent,
     canActivate : [AuthService]
+  },
+  {
+    path: 'estadoCuenta',
+    component:EstadoCuentaComponent,
+    canActivate : [AuthService]
   }
 ];
 

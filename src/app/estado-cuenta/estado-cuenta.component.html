@@ -1,191 +1,164 @@
-<style type="text/css">
-  .section h5 {
-    font-size: 1.2rem;
-    padding-bottom: 0.2rem;
-    border-bottom: 3px solid #00bcd4;
-    ;
-  }
-
-  blockquote {
-
-    border-left: 5px solid #00bcd4;
-    /* Just change the color value and that's it*/
-  }
-</style>
- <app-home></app-home>
-<div class="container">
-  
-    <div class="section">
-    <div class="row">
+<div class="section">
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs" materialize="tabs">
+        <li class="tab col s6"><a href="#consulta">Consulta</a></li>
+        <li class="tab col s6">Reporte</li>
+      </ul>
+    </div>
+    <div class="row" id="consulta">
       <div class="col s12 m12 l12">
         <div class="card-panel hoverable">
-          <h4 class="header2">Estado de Cuenta </h4>
-          <h6>Información requerida para verificar el estado de cuenta</h6>
+          <h4 class="blue-text">Estado de Cuenta </h4>
+          <h6 class="blue-text text-lighter-2">Información requerida para verificar el estado de cuenta</h6>
           <div class="divider"></div><br>
           <div class="row">
             <form class="col s12">
               <blockquote>
                 <div class="row">
-                  <div class="input-field col s6">
-                    <select>
-                      <option value="" disabled selected>Seleccionar</option>
-                      <option value="1">Nit</option>
-                      <option value="2">Cedula de Ciudadanía</option>
-                      <option value="3">Pasaporte</option>
-                   </select>
-                    <label>Tipo de Documento</label>
+                  <div class="input-field col s12 col m10 offset-m1">
+                    <select materialize="material_select" [materializeSelectOptions]="selectOptions">
+                    <option value="" disabled selected>Consulta</option>
+                    <option value="1">Todos</option>
+                    <option value="2">Comparendo</option>
+                    <option value="3">Resolucion</option>
+                  </select>
                   </div>
-                  <div class="input-field col s12">
-                    <input id="n_doc" type="text">
-                    <label for="n_doc">No. de Documento</label>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12 col m10 offset-m1">
+                    <select materialize="material_select" [materializeSelectOptions]="selectOptions" multiple>
+                    <option value="" disabled selected>Zona</option>
+                    <option value="1">Bogota</option>
+                    <option value="2">Medellin</option>
+                    <option value="3">Cali</option>
+                  </select>
                   </div>
-                  <div class="col s12 m4">
-                    <div class="row radio-field">
-                      <div class="col s12">
-                    
-                      </div>
-                      <div class="col s12 required" id="id_education_container">
-                        <div class="radio" id="id_education">
-                          <input class="with-gap" id="id_education_0" name="education" type="radio" value="UG" />
-                          <label class="item-label" for="id_education_0">Todos</label>
-                        </div>
-                        <div class="radio" id="id_education">
-                          <input class="with-gap" id="id_education_1" name="education" type="radio" value="GR" />
-                          <label class="item-label" for="id_education_1">Comparendo</label>
-                        </div>
-                        <div class="radio" id="id_education">
-                          <input class="with-gap" id="id_education_2" name="education" type="radio" value="OT" />
-                          <label class="item-label" for="id_education_2">Resolución</label>
-                        </div>
-                      </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12 col m11 offset-m1">
+                    <div class="col s11 m11">
+                      <input id="icon_prefix" type="text" class="validate">
+                      <label for="icon_prefix">Placa</label>
                     </div>
-                  </div>
-                  <div class="input-field col s12">
-                    <input id="first_name" type="text">
-                    <label for="first_name">Numero</label>
+                    <div class="col s1 m1">
+                      <a class="btn-floating btn-small waves-effect waves-light blue">
+                       <i class="material-icons">add</i>
+                    </a>
+                    </div>
                   </div>
                 </div>
               </blockquote>
               <div class="row">
                 <div class="row">
-                  <div class="input-field col s12">
-                    <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Consultar
-                            <i class="mdi-content-send right"></i>
-                   </button>
+                  <div class="input-field col s12 m12 right-align">
+                    <a class="btn btn-primary blue">
+                       Consultar
+                  </a>
                   </div>
                 </div>
               </div>
             </form>
-            <h5>Federacion Colombiana de Municipios - Simit</h5>
-            <div class="card-panel">
-              <blockquote>
-                Estado de Cuentas sobre las Multas y Sanciones por infreacciones de Transito
-                <br> <br> El(la) señor(a) identificado con Nit No. 8600592943 (OCHO SEIS CERO CERO CINCO NUEVE DOS NUEVE
-                CUATRO TRES), no posee a la fecha pendientes de pago registrados en Simit por concepto de multas, pero presenta
-                los iguientes comparendos.
-                <br> <br> Expedición: 6/6/2017
-                <br> <br> Nota: Este documento es válido durante la fecha de expedición.
-              </blockquote>
-            </div>
+            <div *ngIf="false">
+              <h5 class="blue-text">Comparendos</h5>
+              <div class="row">
+                <div class="input-field col s12">
+                  <table class="responsive-table  striped ">
+                    <thead>
+                      <tr>
+                        <th>Comparendo</th>
+                        <th>Secretaria</th>
+                        <th>Fecha</th>
+                        <th>F. Notificación</th>
+                        <th>Nombre Infractor</th>
+                        <th>Estado</th>
+                        <th>infracción</th>
+                        <th>Valor Multa</th>
+                        <th>Valor Adicional</th>
+                        <th>Total</th>
+                        <th>Valor a Pagar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>11000000010</td>
+                        <td>Bogota D.C</td>
+                        <td>1/0/2012</td>
+                        <td>12/02/2016</td>
+                        <td>LEASING BANCOLOMBIA</td>
+                        <td>Pendiente</td>
+                        <td>C02</td>
+                        <td>283,400.00</td>
+                        <td>1,00</td>
+                        <td>283,400.00</td>
+                        <td>283,400.00</td>
 
-            <h5>Comparendos</h5>
-            <div class="row">
-              <div class="input-field col s12">
-                <table class="responsive-table  striped ">
-                  <thead>
-                    <tr>
-                      <th>Comparendo</th>
-                      <th>Secretaria</th>
-                      <th>Fecha</th>
-                      <th>F. Notificación</th>
-                      <th>Nombre Infractor</th>
-                      <th>Estado</th>
-                      <th>infracción</th>
-                      <th>Valor Multa</th>
-                      <th>Valor Adicional</th>
-                      <th>Total</th>
-                      <th>Valor a Pagar</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>11000000010</td>
-                      <td>Bogota D.C</td>
-                      <td>1/0/2012</td>
-                      <td>12/02/2016</td>
-                      <td>LEASING BANCOLOMBIA</td>
-                      <td>Pendiente</td>
-                      <td>C02</td>
-                      <td>283,400.00</td>
-                      <td>1,00</td>
-                      <td>283,400.00</td>
-                      <td>283,400.00</td>
+                      </tr>
+                      <tr>
 
-                    </tr>
-                    <tr>
+                        <td>1100000001</td>
+                        <td>Bogota D.C</td>
+                        <td>1/0/2012</td>
+                        <td>12/02/2016</td>
+                        <td>LEASING BANCOLOMBIA</td>
+                        <td>Pendiente</td>
+                        <td>C02</td>
+                        <td>283,400.00</td>
+                        <td>1,00</td>
+                        <td>283,400.00</td>
+                        <td>283,400.00</td>
 
-                      <td>1100000001</td>
-                      <td>Bogota D.C</td>
-                      <td>1/0/2012</td>
-                      <td>12/02/2016</td>
-                      <td>LEASING BANCOLOMBIA</td>
-                      <td>Pendiente</td>
-                      <td>C02</td>
-                      <td>283,400.00</td>
-                      <td>1,00</td>
-                      <td>283,400.00</td>
-                      <td>283,400.00</td>
+                      </tr>
 
-                    </tr>
+                      <tr>
 
-                    <tr>
+                        <td>1100000001</td>
+                        <td>Bogota D.C</td>
+                        <td>1/0/2012</td>
+                        <td>12/02/2016</td>
+                        <td>LEASING BANCOLOMBIA</td>
+                        <td>Pendiente</td>
+                        <td>C02</td>
+                        <td>283,400.00</td>
+                        <td>1,00</td>
+                        <td>283,400.00</td>
+                        <td>283,400.00</td>
 
-                      <td>1100000001</td>
-                      <td>Bogota D.C</td>
-                      <td>1/0/2012</td>
-                      <td>12/02/2016</td>
-                      <td>LEASING BANCOLOMBIA</td>
-                      <td>Pendiente</td>
-                      <td>C02</td>
-                      <td>283,400.00</td>
-                      <td>1,00</td>
-                      <td>283,400.00</td>
-                      <td>283,400.00</td>
+                      </tr>
 
-                    </tr>
+                      <tr>
 
-                    <tr>
+                        <td>1100000001</td>
+                        <td>Bogota D.C</td>
+                        <td>1/0/2012</td>
+                        <td>12/02/2016</td>
+                        <td>LEASING BANCOLOMBIA</td>
+                        <td>Pendiente</td>
+                        <td>C02</td>
+                        <td>283,400.00</td>
+                        <td>1,00</td>
+                        <td>283,400.00</td>
+                        <td>283,400.00</td>
 
-                      <td>1100000001</td>
-                      <td>Bogota D.C</td>
-                      <td>1/0/2012</td>
-                      <td>12/02/2016</td>
-                      <td>LEASING BANCOLOMBIA</td>
-                      <td>Pendiente</td>
-                      <td>C02</td>
-                      <td>283,400.00</td>
-                      <td>1,00</td>
-                      <td>283,400.00</td>
-                      <td>283,400.00</td>
+                      </tr>
 
-                    </tr>
+                      <tr>
 
-                    <tr>
-
-                      <td>1100000001</td>
-                      <td>Bogota D.C</td>
-                      <td>1/0/2012</td>
-                      <td>12/02/2016</td>
-                      <td>LEASING BANCOLOMBIA</td>
-                      <td>Pendiente</td>
-                      <td>C02</td>
-                      <td>283,400.00</td>
-                      <td>1,00</td>
-                      <td>283,400.00</td>
-                      <td>283,400.00</td>
-                    </tr>
-                  </tbody>
-                </table>
+                        <td>1100000001</td>
+                        <td>Bogota D.C</td>
+                        <td>1/0/2012</td>
+                        <td>12/02/2016</td>
+                        <td>LEASING BANCOLOMBIA</td>
+                        <td>Pendiente</td>
+                        <td>C02</td>
+                        <td>283,400.00</td>
+                        <td>1,00</td>
+                        <td>283,400.00</td>
+                        <td>283,400.00</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>

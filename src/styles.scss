@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+$roboto-font-path: "/node_modules/materialize-css/fonts/roboto/"; // fix font path
+@import "node_modules/materialize-css/sass/materialize";
+$primary-color: color("blue", "accent-4") !default;
 html {
   height: 100%;
   width: 100%;

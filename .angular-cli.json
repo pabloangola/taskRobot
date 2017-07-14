@@ -19,8 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css",
-        "../node_modules/materialize-css/dist/css/materialize.css",
+        "styles.scss",
         "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css"
       ],
       "scripts": [
