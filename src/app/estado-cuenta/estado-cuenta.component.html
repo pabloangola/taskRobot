@@ -1,13 +1,16 @@
 <app-home></app-home>
-<div class="container">
 <div class="section">
-  <div class="row">
-    <div class="col s12">
-      <ul class="tabs" materialize="tabs">
-        <li class="tab col s6"><a href="#consulta">Consulta</a></li>
-        <li class="tab col s6"><a>Reporte</a></li>
-      </ul>
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <ul class="tabs" materialize="tabs">
+          <li class="tab col s6"><a href="#consulta">Consulta</a></li>
+          <li class="tab col s6"><a href="#respuesta">Reporte</a></li>
+        </ul>
+      </div>
     </div>
+  </div>
+  <div class="container">
     <div class="row" id="consulta">
       <div class="col s12 m12 l12">
         <div class="card-panel hoverable">
@@ -39,11 +42,11 @@
                 </div>
                 <div class="row">
                   <div class="input-field col s12 col m11 offset-m1">
-                    <div class="col s11 m11">
+                    <div class="col s10 m11">
                       <input id="icon_prefix" type="text" class="validate" [(ngModel)]="placa" name="placa">
                       <label for="icon_prefix">Placa</label>
                     </div>
-                    <div class="col s1 m1">
+                    <div class="col s2 m1">
                       <a class="btn-floating btn-small waves-effect waves-light blue" (click)="incluirPlaca()">
                        <i class="material-icons">add</i>
                     </a>
@@ -51,10 +54,10 @@
                   </div>
                 </div>
                 <div class="col s12 m10 offset-m1">
-                  <table class="striped bordered">
+                  <table class="striped bordered" *ngIf="placas.length > 0">
                     <tr>
                       <th>
-                        Placas <span class="circle badge blue white-text">{{placas.length}}</span>
+                        Placas
                       </th>
                     </tr>
                     <tr *ngFor="let placa of placas">
@@ -68,125 +71,55 @@
               <div class="row">
                 <div class="row">
                   <div class="input-field col s12 m12 right-align">
-                    <a class="btn btn-primary blue">
+                    <a type="button" class="btn btn-primary blue" (click)="consultar()">
                        Consultar
-                  </a>
+                    </a>
                   </div>
                 </div>
               </div>
             </form>
-            <div *ngIf="false">
-              <h5 class="blue-text">Comparendos</h5>
-              <div class="row">
-                <div class="input-field col s12">
-                  <table class="responsive-table  striped ">
-                    <thead>
-                      <tr>
-                        <th>Comparendo</th>
-                        <th>Secretaria</th>
-                        <th>Fecha</th>
-                        <th>F. Notificación</th>
-                        <th>Nombre Infractor</th>
-                        <th>Estado</th>
-                        <th>infracción</th>
-                        <th>Valor Multa</th>
-                        <th>Valor Adicional</th>
-                        <th>Total</th>
-                        <th>Valor a Pagar</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>11000000010</td>
-                        <td>Bogota D.C</td>
-                        <td>1/0/2012</td>
-                        <td>12/02/2016</td>
-                        <td>LEASING BANCOLOMBIA</td>
-                        <td>Pendiente</td>
-                        <td>C02</td>
-                        <td>283,400.00</td>
-                        <td>1,00</td>
-                        <td>283,400.00</td>
-                        <td>283,400.00</td>
-
-                      </tr>
-                      <tr>
-
-                        <td>1100000001</td>
-                        <td>Bogota D.C</td>
-                        <td>1/0/2012</td>
-                        <td>12/02/2016</td>
-                        <td>LEASING BANCOLOMBIA</td>
-                        <td>Pendiente</td>
-                        <td>C02</td>
-                        <td>283,400.00</td>
-                        <td>1,00</td>
-                        <td>283,400.00</td>
-                        <td>283,400.00</td>
-
-                      </tr>
-
-                      <tr>
-
-                        <td>1100000001</td>
-                        <td>Bogota D.C</td>
-                        <td>1/0/2012</td>
-                        <td>12/02/2016</td>
-                        <td>LEASING BANCOLOMBIA</td>
-                        <td>Pendiente</td>
-                        <td>C02</td>
-                        <td>283,400.00</td>
-                        <td>1,00</td>
-                        <td>283,400.00</td>
-                        <td>283,400.00</td>
-
-                      </tr>
-
-                      <tr>
-
-                        <td>1100000001</td>
-                        <td>Bogota D.C</td>
-                        <td>1/0/2012</td>
-                        <td>12/02/2016</td>
-                        <td>LEASING BANCOLOMBIA</td>
-                        <td>Pendiente</td>
-                        <td>C02</td>
-                        <td>283,400.00</td>
-                        <td>1,00</td>
-                        <td>283,400.00</td>
-                        <td>283,400.00</td>
-
-                      </tr>
-
-                      <tr>
-
-                        <td>1100000001</td>
-                        <td>Bogota D.C</td>
-                        <td>1/0/2012</td>
-                        <td>12/02/2016</td>
-                        <td>LEASING BANCOLOMBIA</td>
-                        <td>Pendiente</td>
-                        <td>C02</td>
-                        <td>283,400.00</td>
-                        <td>1,00</td>
-                        <td>283,400.00</td>
-                        <td>283,400.00</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="row" id="respuesta">
+      <h5 class="blue-text">Comparendos</h5>
+      <div class="row">
+        <div class="input-field col s12">
+          <table class="responsive-table  striped ">
+            <thead>
+              <tr>
+                <th>Comparendo</th>
+                <th>Secretaria</th>
+                <th>Fecha</th>
+                <th>F. Notificación</th>
+                <th>Nombre Infractor</th>
+                <th>Estado</th>
+                <th>infracción</th>
+                <th>Valor Multa</th>
+                <th>Valor Adicional</th>
+                <th>Total</th>
+                <th>Valor a Pagar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let comparendo of comparendos">
+                <td>
+                  {{comparendo.numero}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
-  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-  <script>
-    $(".button-collapse").sideNav();
-  </script>
-  </div>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+<script>
+  $(".button-collapse").sideNav();
+
+</script>

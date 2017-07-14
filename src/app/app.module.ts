@@ -16,6 +16,8 @@ import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import {AuthService} from './providers/auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
+import { HttpModule, JsonpModule } from '@angular/http';
+import {ComparendoService} from './services/comparendo.service';
  
 
 const appRoutes: Routes = [
@@ -69,7 +71,7 @@ const appRoutes: Routes = [
     ConsultarVehiculosComponent,
     AsociarVehiculosComponent,
     InformacionBatchComponent,
-    HomeComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -81,9 +83,11 @@ const appRoutes: Routes = [
       { enableTracing: false }
     ),
     ToastModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpModule,
+    JsonpModule
   ],
-  providers: [AuthService],
+  providers: [AuthService,ComparendoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
