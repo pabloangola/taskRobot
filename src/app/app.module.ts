@@ -19,7 +19,9 @@ import { HomeComponent } from './home/home.component';
 import { HttpModule, JsonpModule } from '@angular/http';
 import {ComparendoService} from './services/comparendo.service';
 import {EmailService} from './services/email.service';
-
+import {TelefonoService} from './services/telefono.service';
+//import {NG2DataTableModule} from "angular2-datatable-pagination";
+ 
 const appRoutes: Routes = [
   {
     path: 'login',
@@ -85,9 +87,9 @@ const appRoutes: Routes = [
     ToastModule.forRoot(),
     BrowserAnimationsModule,
     HttpModule,
-    JsonpModule
+    JsonpModule 
   ],
-  providers: [AuthService,ComparendoService, EmailService],
+  providers: [AuthService,ComparendoService, EmailService, TelefonoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
