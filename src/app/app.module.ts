@@ -15,11 +15,33 @@ import { InformacionBatchComponent } from './informacion-batch/informacion-batch
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import {AuthService} from './providers/auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './home/home.component';
+ 
 
 const appRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'informacion-batch',
+    component: InformacionBatchComponent
+  },
+  {
+    path: 'estado-cuenta',
+    component: EstadoCuentaComponent
+  },
+   {
+    path: 'consultar-vehiculos',
+    component: ConsultarVehiculosComponent
+  },
+  {
+    path: 'asociar-vehiculos',
+    component: AsociarVehiculosComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent
   },
   {
     path: '',
@@ -42,6 +64,7 @@ const appRoutes: Routes = [
     ConsultarVehiculosComponent,
     AsociarVehiculosComponent,
     InformacionBatchComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
