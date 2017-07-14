@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
+import { MaterializeAction } from 'angular2-materialize';
 
 @Component({
   selector: 'app-home',
@@ -11,5 +12,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
+
+   sideNavActions = new EventEmitter<any|MaterializeAction>();
+    closeSideNav() {
+            this.sideNavActions.emit({action: "sideNav", params: ['hide']});
+    }
 
 }

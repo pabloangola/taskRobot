@@ -1,9 +1,24 @@
  
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+  <script>
+  //s  $(".button-collapse").sideNav();
+  </script>
 <div class="container">
   <nav class="cyan">
     <div class="nav-wrapper">
-      <a ng-href="#!" class="brand-logo"><img src="/assets/image/logo.png" width="60">   </a>
-      <a href="" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <a  class="brand-logo"><img src="/assets/image/logo.png" width="60">   </a>
+     <button class="sidebar-collapse hide-on-large-only collapseButton"
+               materialize="sideNav"
+               [materializeParams]="[{edge: right,draggable: true}]"
+               [materializeActions]="sideNavActions"
+               data-activates="slide-out"
+               >
+                <i class="small material-icons">menu</i>
+     </button>
+
+      <a  ></a>
       <ul class="right hide-on-med-and-down">
        
         <li><a routerLink="/consultar-vehiculos" routerLinkActive="active">Consultar Vehiculos</a></li>
@@ -11,11 +26,11 @@
         <li><a routerLink="/asociar-vehiculos" routerLinkActive="active">Asociar Vehiculos</a></li>
           <li><a routerLink="/informacion-batch" routerLinkActive="active">Informacion Batch</a></li>
       </ul>
-      <ul class="side-nav" id="mobile-demo">
-        <li><a routerLink="/informacion-batch" routerLinkActive="active">Informacion Batch</a></li>
-         <li><a href="sass.html">Consultar Vehiculos</a></li>
-        <li><a href="badges.html">Estado Cuenta</a></li>
-        <li><a href="mobile.html">Asociar Vehiculos</a></li>
+      <ul class="side-nav" id="slide-out">
+        <li><a routerLink="/consultar-vehiculos" routerLinkActive="active">Consultar Vehiculos</a></li>
+        <li><a routerLink="/estado-cuenta" routerLinkActive="active">Estado Cuenta</a></li>
+        <li><a routerLink="/asociar-vehiculos" routerLinkActive="active">Asociar Vehiculos</a></li>
+          <li><a routerLink="/informacion-batch" routerLinkActive="active">Informacion Batch</a></li>
       </ul>
     </div>
   </nav>
