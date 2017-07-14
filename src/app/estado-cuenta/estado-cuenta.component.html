@@ -90,23 +90,54 @@
             <thead>
               <tr>
                 <th>Comparendo</th>
-                <th>Secretaria</th>
                 <th>Fecha</th>
-                <th>F. Notificación</th>
-                <th>Nombre Infractor</th>
+                <th>Direccion</th>
                 <th>Estado</th>
-                <th>infracción</th>
-                <th>Valor Multa</th>
-                <th>Valor Adicional</th>
+                <th>Foto Deteccion</th>
+                <th>Codigo</th>
                 <th>Total</th>
-                <th>Valor a Pagar</th>
+                <th>Secretaria</th>
+                <th>Placa Vehiculo</th>
+                <th>TipoVehiculo</th>
+                <th>servicioVehiculo</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let comparendo of comparendos">
+              <tr *ngFor="let v of valor">
                 <td>
-                  {{comparendo.numero}}
+                 {{ v.numero }}
                 </td>
+                  <td>
+                 {{ v.fecha }}
+                </td>
+                  <td>
+                 {{ v.direccion }}
+                </td>
+                  <td>
+                 {{ v.estado }}
+                </td>
+                  <td>
+                 {{ v.fotodeteccion }}
+                </td>
+                  <td>
+                 {{ v.codigo }}
+                </td>
+                  <td>
+                 {{ v.total }}
+                </td>
+                  <td>
+                 {{ v.secretaria }}
+                </td>
+                  <td>
+                 {{ v.placaVehiculo }}
+                </td>
+                  <td>
+                 {{ v.tipoVehiculo }}
+                </td>
+                  <td>
+                 {{ v.servicioVehiculo }}
+                </td>
+                
               </tr>
             </tbody>
           </table>
