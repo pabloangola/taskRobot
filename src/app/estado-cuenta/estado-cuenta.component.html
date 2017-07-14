@@ -83,64 +83,77 @@
       </div>
     </div>
     <div class="row" id="respuesta">
-      <h5 class="blue-text">Comparendos</h5>
-      <div class="row">
-        <div class="input-field col s12">
-          <table class="responsive-table  striped ">
-            <thead>
-              <tr>
-                <th>Comparendo</th>
-                <th>Fecha</th>
-                <th>Direccion</th>
-                <th>Estado</th>
-                <th>Foto Deteccion</th>
-                <th>Codigo</th>
-                <th>Total</th>
-                <th>Secretaria</th>
-                <th>Placa Vehiculo</th>
-                <th>TipoVehiculo</th>
-                <th>servicioVehiculo</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let v of valor">
-                <td>
-                 {{ v.numero }}
-                </td>
-                  <td>
-                 {{ v.fecha }}
-                </td>
-                  <td>
-                 {{ v.direccion }}
-                </td>
-                  <td>
-                 {{ v.estado }}
-                </td>
-                  <td>
-                 {{ v.fotodeteccion }}
-                </td>
-                  <td>
-                 {{ v.codigo }}
-                </td>
-                  <td>
-                 {{ v.total }}
-                </td>
-                  <td>
-                 {{ v.secretaria }}
-                </td>
-                  <td>
-                 {{ v.placaVehiculo }}
-                </td>
-                  <td>
-                 {{ v.tipoVehiculo }}
-                </td>
-                  <td>
-                 {{ v.servicioVehiculo }}
-                </td>
-                
-              </tr>
-            </tbody>
-          </table>
+      <div class="col s12 m12 l12">
+        <div class="card-panel hoverable">
+          <h5 class="blue-text">Comparendos</h5>
+          <div class="row">
+            <div class="input-field col s12">
+              <table class="responsive-table  striped ">
+                <thead>
+                  <tr>
+                    <th>Comparendo</th>
+                    <th>Fecha</th>
+                    <th>Direccion</th>
+                    <th>Estado</th>
+                    <th>Foto Deteccion</th>
+                    <th>Codigo</th>
+                    <th>Total</th>
+                    <th>Secretaria</th>
+                    <th>Placa Vehiculo</th>
+                    <th>TipoVehiculo</th>
+                    <th>servicioVehiculo</th>
+                    <th>Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let comparendo of comparendos">
+                    <td>
+                      {{ comparendo.numero }}
+                    </td>
+                    <td>
+                      {{ comparendo.fecha }}
+                    </td>
+                    <td>
+                      {{ comparendo.direccion }}
+                    </td>
+                    <td>
+                      {{ comparendo.estado }}
+                    </td>
+                    <td>
+                      {{ comparendo.fotodeteccion }}
+                    </td>
+                    <td>
+                      {{ comparendo.codigo }}
+                    </td>
+                    <td>
+                      {{ comparendo.total }}
+                    </td>
+                    <td>
+                      {{ comparendo.secretaria }}
+                    </td>
+                    <td>
+                      {{ comparendo.placaVehiculo }}
+                    </td>
+                    <td>
+                      {{ comparendo.tipoVehiculo }}
+                    </td>
+                    <td>
+                      {{ comparendo.servicioVehiculo }}
+                    </td>
+                    <td>
+                      {{ comparendo.email }}
+                    </td>
+
+                  </tr>
+                </tbody>
+              </table>
+              <div class="input-field col s12 m12 right-align">
+                <a type="button" class="btn btn-primary blue" (click)="generarReporte()">
+                       Generar Reporte
+                    </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -18,7 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { HttpModule, JsonpModule } from '@angular/http';
 import {ComparendoService} from './services/comparendo.service';
- 
+import {EmailService} from './services/email.service';
 
 const appRoutes: Routes = [
   {
@@ -87,7 +87,7 @@ const appRoutes: Routes = [
     HttpModule,
     JsonpModule
   ],
-  providers: [AuthService,ComparendoService],
+  providers: [AuthService,ComparendoService, EmailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
