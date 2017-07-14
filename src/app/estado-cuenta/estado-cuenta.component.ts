@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EstadoCuentaComponent implements OnInit {
 
+  placas = [];
+  placa:string;
+
+  incluirPlaca(){
+    this.placas.push(this.placa);
+    this.placa = "";
+  }
+
   constructor() { }
 
   ngOnInit() {
