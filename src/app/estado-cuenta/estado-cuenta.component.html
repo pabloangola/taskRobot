@@ -3,9 +3,9 @@
   <div class="container">
     <div class="row">
       <div class="col s12">
-        <ul class="tabs" materialize="tabs">
-          <li class="tab col s6"><a href="#consulta">Consulta</a></li>
-          <li class="tab col s6"><a href="#respuesta" id="reporteTab">Reporte</a></li>
+        <ul class="tabs">
+          <li class="tab col s6"><a id="consultaTab" (click)="tabConsulta()">Consulta</a></li>
+          <li class="tab col s6"><a id="reporteTab" (click)="tabReporte()">Reporte</a></li>
         </ul>
       </div>
     </div>
@@ -43,7 +43,7 @@
                 <div class="row">
                   <div class="input-field col s12 col m11 offset-m1">
                     <div class="col s10 m11">
-                      <input id="icon_prefix" type="text" class="validate" [(ngModel)]="placa" name="placa">
+                      <input id="icon_prefix" type="text" class="validate" [(ngModel)]="placa" name="placa" maxlength="6">
                       <label for="icon_prefix">Placa</label>
                     </div>
                     <div class="col s2 m1">
@@ -56,13 +56,18 @@
                 <div class="col s12 m10 offset-m1">
                   <table class="striped bordered" *ngIf="placas.length > 0">
                     <tr>
-                      <th>
+                      <th colspan="2">
                         Placas
                       </th>
                     </tr>
                     <tr *ngFor="let placa of placas">
                       <td>
                         {{placa}}
+                      </td>
+                      <td>
+                        <button type="button" class="btn-floating btn-small right waves-effect waves-light red" (click)="eliminarPlaca($index)">
+                          <i class="large material-icons">delete</i>
+                        </button>
                       </td>
                     </tr>
                   </table>
@@ -82,7 +87,7 @@
         </div>
       </div>
     </div>
-    <div class="row" id="respuesta">
+    <div class="row" id="respuesta" style="display:none">
       <div class="col s12 m12 l12">
         <div class="card-panel hoverable">
           <h5 class="blue-text">Comparendos</h5>
@@ -147,18 +152,18 @@
                   </tr>
                 </tbody>
               </table>
-            
+
             </div>
-              <div class="input-field col s12 m12 right-align">
-                <a type="button" class="btn btn-primary blue" (click)="generarReporte()">
-                       Generar Reporte
-                    </a>
-              </div>
+            <div class="input-field col s12 m12 right-align">
+              <a type="button" class="btn btn-primary blue" (click)="generarReporte()">
+                Generar Reporte
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div> 
+  </div>
 </div>
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>

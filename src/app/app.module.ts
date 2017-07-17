@@ -12,15 +12,16 @@ import { EstadoCuentaComponent } from './estado-cuenta/estado-cuenta.component';
 import { ConsultarVehiculosComponent } from './consultar-vehiculos/consultar-vehiculos.component';
 import { AsociarVehiculosComponent } from './asociar-vehiculos/asociar-vehiculos.component';
 import { InformacionBatchComponent } from './informacion-batch/informacion-batch.component';
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
-import {AuthService} from './providers/auth.service';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { AuthService } from './providers/auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { HttpModule, JsonpModule } from '@angular/http';
-import {ComparendoService} from './services/comparendo.service';
-import {EmailService} from './services/email.service';
-import {TelefonoService} from './services/telefono.service';
- 
+import { ComparendoService } from './services/comparendo.service';
+import { EmailService } from './services/email.service';
+import { TelefonoService } from './services/telefono.service';
+import { VehiculosService } from './services/vehiculos.service';
+
 const appRoutes: Routes = [
   {
     path: 'login',
@@ -34,7 +35,7 @@ const appRoutes: Routes = [
     path: 'estado-cuenta',
     component: EstadoCuentaComponent
   },
-   {
+  {
     path: 'consultar-vehiculos',
     component: ConsultarVehiculosComponent
   },
@@ -54,12 +55,12 @@ const appRoutes: Routes = [
   {
     path: 'consultarVehiculos',
     component: ConsultarVehiculosComponent,
-    canActivate : [AuthService]
+    canActivate: [AuthService]
   },
   {
     path: 'estadoCuenta',
-    component:EstadoCuentaComponent,
-    canActivate : [AuthService]
+    component: EstadoCuentaComponent,
+    canActivate: [AuthService]
   }
 ];
 
@@ -79,16 +80,16 @@ const appRoutes: Routes = [
     MaterializeModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    FormsModule,RouterModule.forRoot(
+    FormsModule, RouterModule.forRoot(
       appRoutes,
       { enableTracing: false }
     ),
     ToastModule.forRoot(),
     BrowserAnimationsModule,
     HttpModule,
-    JsonpModule 
+    JsonpModule
   ],
-  providers: [AuthService,ComparendoService, EmailService, TelefonoService],
+  providers: [AuthService, ComparendoService, EmailService, TelefonoService,VehiculosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
