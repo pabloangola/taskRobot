@@ -1,7 +1,5 @@
 import { Component, ViewContainerRef } from '@angular/core';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +10,8 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'app';
 
-  constructor(public afAuth: AngularFireAuth, public toastr: ToastsManager, vRef: ViewContainerRef,private router: Router) {
-    this.toastr.setRootViewContainerRef(vRef);
+  constructor(public afAuth: AngularFireAuth) {
+   
   }
 
   logout() {

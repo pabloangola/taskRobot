@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-$roboto-font-path: "/node_modules/materialize-css/dist/fonts/roboto/"; // fix font path
-@import "node_modules/materialize-css/sass/materialize";
+ 
+ @import "~@angular/material/prebuilt-themes/indigo-pink.css";
   
 $primary-color: color("blue", "accent-4") !default;
 html {

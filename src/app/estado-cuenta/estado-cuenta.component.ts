@@ -8,9 +8,9 @@ import { EmailService } from '../services/email.service';
 import { TelefonoService } from '../services/telefono.service';
 import { Comparendo } from '../dto/comparendo';
 import { EmailRequest } from '../dto/emailRequest';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
-import * as $ from 'jquery';
+ 
 import { SmsRequest } from '../dto/smsRequest';
+import {MdInputModule} from '@angular/material';
 
 @Component({
   selector: 'app-estado-cuenta',
@@ -18,7 +18,15 @@ import { SmsRequest } from '../dto/smsRequest';
   styleUrls: ['./estado-cuenta.component.css']
 })
 export class EstadoCuentaComponent implements OnInit {
+selectedValue: string;
 
+  foods = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
+
+  
   placas = [];
   placa: string;
   comparendos: Comparendo[];
@@ -29,9 +37,7 @@ export class EstadoCuentaComponent implements OnInit {
   constructor(private comparendoService: ComparendoService,
     private emailService: EmailService,
     private smsService: TelefonoService,
-    private toastr: ToastsManager,
     private vRef: ViewContainerRef) {
-    this.toastr.setRootViewContainerRef(vRef);
   }
 
   incluirPlaca() {
@@ -50,8 +56,8 @@ export class EstadoCuentaComponent implements OnInit {
       this.toastr.success('Consulta realizada correctamente');
       $("#consulta").hide();
       $("#respuesta").show()});*/
-      $("#consulta").hide();
-      $("#respuesta").show();
+  //    $("#consulta").hide();
+   //   $("#respuesta").show();
   }
 
 
