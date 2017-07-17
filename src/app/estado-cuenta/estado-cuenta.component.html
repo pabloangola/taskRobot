@@ -5,12 +5,12 @@
       <div class="col s12">
         <ul class="tabs" materialize="tabs">
           <li class="tab col s6"><a href="#consulta">Consulta</a></li>
-          <li class="tab col s6"><a href="#respuesta">Reporte</a></li>
+          <li class="tab col s6"><a href="#respuesta" id="reporteTab">Reporte</a></li>
         </ul>
       </div>
     </div>
   </div>
- <div class="container"> 
+  <div class="container">
     <div class="row" id="consulta">
       <div class="col s12 m12 l12">
         <div class="card-panel hoverable">
@@ -18,11 +18,11 @@
           <h6 class="blue-text text-lighter-2">Información requerida para verificar el estado de cuenta</h6>
           <div class="divider"></div><br>
           <div class="row">
-            <form class="col s12">
+            <form #queryForm="ngForm" class="col s12" (ngSubmit)="consultar()" novalidate>
               <blockquote>
                 <div class="row">
                   <div class="input-field col s12 col m10 offset-m1">
-                    <select materialize="material_select" [materializeSelectOptions]="selectOptions">
+                    <select materialize="material_select" [materializeSelectOptions]="selectOptions" required="required">
                     <option value="" disabled selected>Consulta</option>
                     <option value="1">Todos</option>
                     <option value="2">Comparendo</option>
@@ -71,9 +71,9 @@
               <div class="row">
                 <div class="row">
                   <div class="input-field col s12 m12 right-align">
-                    <a type="button" class="btn btn-primary blue" (click)="consultar()">
+                    <button type="submit" class="btn btn-primary blue" [disabled]="!queryForm.form.valid">
                        Consultar
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>

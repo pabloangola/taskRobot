@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -8,6 +8,8 @@ import { EmailService } from '../services/email.service';
 import { TelefonoService } from '../services/telefono.service';
 import { Comparendo } from '../dto/comparendo';
 import { EmailRequest } from '../dto/emailRequest';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import * as $ from 'jquery';
 import { SmsRequest } from '../dto/smsRequest';
 
 @Component({
@@ -24,7 +26,13 @@ export class EstadoCuentaComponent implements OnInit {
   smsRequest:SmsRequest[] = [];
   baseUrl: string;
 
-  constructor(private comparendoService: ComparendoService, private emailService: EmailService, private smsService: TelefonoService) { }
+  constructor(private comparendoService: ComparendoService,
+    private emailService: EmailService,
+    private smsService: TelefonoService,
+    private toastr: ToastsManager,
+    private vRef: ViewContainerRef) {
+    this.toastr.setRootViewContainerRef(vRef);
+  }
 
   incluirPlaca() {
     this.placas.push(this.placa);
@@ -32,19 +40,22 @@ export class EstadoCuentaComponent implements OnInit {
   }
 
   consultar() {
-    alert('entro');
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
     let body = { "tipo": 4, "numero": "8909039388" }
 
-    this.comparendoService.getComparendo(body)
-      .subscribe(res => this.comparendos = res);
+    /*this.comparendoService.getComparendo(body)
+      //.subscribe(res => {this.comparendos = res;
+      this.toastr.success('Consulta realizada correctamente');
+      $("#consulta").hide();
+      $("#respuesta").show()});*/
+      $("#consulta").hide();
+      $("#respuesta").show();
   }
 
 
   generarReporte() {
-    alert('genero el reporte ');
 
       /*this.comparendos.forEach(element => {
         var emailRequestObject : EmailRequest = new EmailRequest();
