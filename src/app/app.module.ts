@@ -18,10 +18,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { ComparendoService } from './services/comparendo.service';
 import { EmailService } from './services/email.service';
 import { TelefonoService } from './services/telefono.service';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule } from '@angular/material';
-import { MaterialModule } from '@angular/material';
-import { MdMenuModule } from 'md-menu/menu';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
   {
@@ -77,7 +74,6 @@ const appRoutes: Routes = [
     HomeComponent
   ],
   imports: [
-    MaterialModule,
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
@@ -86,9 +82,7 @@ const appRoutes: Routes = [
       { enableTracing: false }
     ),
     HttpModule,
-    NoopAnimationsModule,
-    MdButtonModule,
-    MdCheckboxModule
+    NgbModule.forRoot()
   ],
   providers: [AuthService, ComparendoService, EmailService, TelefonoService],
   bootstrap: [AppComponent]
