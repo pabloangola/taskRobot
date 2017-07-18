@@ -1,89 +1,12 @@
-<form class="currentFrame vertical-center" (ngSubmit)="LoginWithEmail()">
-  <div class="row">
-    <div class="col s12 offset-s0 m6 offset-m3 centralFrame z-depth-4">
-      <div class="container center-align">
-        <div class="row">
-          <h4 class="grey-text text-darken-1">Ingreso</h4>
-        </div>
-        <div class="row col 12">
-          <div class="col s12 input-field">
-            <i class="material-icons prefix">account_box</i>
-            <input placeholder="" id="email" type="email" class="validate" name="email" [(ngModel)]="email">
-            <label for="email">Email</label>
-          </div>
-          <div class="col s12 input-field">
-            <i class="material-icons prefix">lock</i>
-            <input placeholder=""  id="password" type="password" class="validate" [(ngModel)]="password" name="password">
-            <label for="password">Clave</label>
-          </div>
-          <div class="col s12">
-            <button type="submit" class="btn btn-primary col s12">Ingresar</button>
-          </div>
-          <div class="col s12">
-            <br>
-            <div class="col s4 right-align">
-              <img src="../assets/image/googleSignIn.png" width="30px" height="30px">
-            </div>
-            <div class="col s8 left-align">
-              <a type="button" class="col s12" (click)="loginWithGoogle()">
-              Ingresar con Google
-            </a>
-            </div>
-          </div>
-          <div class="col s12">
-            <br>
-            <a (click)="forgetModal();">¿Ha Olvidado su contraseña?</a>
-          </div>
-          <div class="horizontal right">
-            <a class="btn-floating waves-effect waves-light blue" (click)="openModal()"><i class="material-icons">add</i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="registroModal" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalRegister">
-    <div class="modal-header center-align">
-      <h4 class="grey-text text-darken-1">Registro</h4>
-    </div>
-    <div class="modal-content">
-      <div class="row">
-        <div class="col s12 input-field">
-          <i class="material-icons prefix">account_box</i>
-          <input type="email" id="registry_email" [(ngModel)]="registerEmail" name="registerEmail">
-          <label for="registry_email">Correo</label>
-        </div>
-        <div class="col s12 input-field">
-          <i class="material-icons prefix">lock</i>
-          <input type="password" id="registry_password" [(ngModel)]="registerPassword" name="registerPassword">
-          <label for="registry_password">Contraseña</label>
-        </div>
-        <div class="col s12 input-field">
-          <i class="material-icons prefix">lock</i>
-          <input type="password" id="registry_confirm_password">
-          <label for="registry_confirm_password">Repita su contraseña</label>
-        </div>
-        <div class="col s12 right-align">
-          <button type="button" class="btn btn-primary" (click)="registerUser()">Registrar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="olvidoModal" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalForget">
-    <div class="modal-header center-align">
-      <h4 class="grey-text text-darken-1">Restablecer Contraseña</h4>
-    </div>
-    <div class="modal-content">
-      <div class="row">
-        <div class="col s12 input-field">
-          <i class="material-icons prefix">account_box</i>
-          <input type="email" id="forget_email" [(ngModel)]="forgetEmail" name="forgetEmail">
-          <label for="forget_email">Correo</label>
-        </div>
-        <div class="col s12 right-align">
-          <button type="button" class="btn btn-primary" (click)="forgetPassword()">forgetPassword</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<form class="login-form" (ngSubmit)="LoginWithEmail()">
+  <md-grid-list cols="2" rowHeight="2:1">
+    <md-grid-tile>
+      <md-input-container class="example-full-width">
+        <input mdInput placeholder="Correo Electronico">
+      </md-input-container>
+    </md-grid-tile>
+    <md-grid-tile>2</md-grid-tile>
+    <md-grid-tile>3</md-grid-tile>
+    <md-grid-tile>4</md-grid-tile>
+  </md-grid-list>
 </form>

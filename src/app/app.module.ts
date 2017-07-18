@@ -1,4 +1,4 @@
- 
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -12,17 +12,16 @@ import { EstadoCuentaComponent } from './estado-cuenta/estado-cuenta.component';
 import { ConsultarVehiculosComponent } from './consultar-vehiculos/consultar-vehiculos.component';
 import { AsociarVehiculosComponent } from './asociar-vehiculos/asociar-vehiculos.component';
 import { InformacionBatchComponent } from './informacion-batch/informacion-batch.component';
-import {AuthService} from './providers/auth.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthService } from './providers/auth.service';
 import { HomeComponent } from './home/home.component';
 import { HttpModule, JsonpModule } from '@angular/http';
-import {ComparendoService} from './services/comparendo.service';
-import {EmailService} from './services/email.service';
-import {TelefonoService} from './services/telefono.service';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {MdButtonModule, MdCheckboxModule} from '@angular/material';
+import { ComparendoService } from './services/comparendo.service';
+import { EmailService } from './services/email.service';
+import { TelefonoService } from './services/telefono.service';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MdButtonModule, MdCheckboxModule } from '@angular/material';
 import { MaterialModule } from '@angular/material';
-import {MdMenuModule} from 'md-menu/menu';
+import { MdMenuModule } from 'md-menu/menu';
 
 const appRoutes: Routes = [
   {
@@ -37,7 +36,7 @@ const appRoutes: Routes = [
     path: 'estado-cuenta',
     component: EstadoCuentaComponent
   },
-   {
+  {
     path: 'consultar-vehiculos',
     component: ConsultarVehiculosComponent
   },
@@ -57,12 +56,12 @@ const appRoutes: Routes = [
   {
     path: 'consultarVehiculos',
     component: ConsultarVehiculosComponent,
-    canActivate : [AuthService]
+    canActivate: [AuthService]
   },
   {
     path: 'estadoCuenta',
-    component:EstadoCuentaComponent,
-    canActivate : [AuthService]
+    component: EstadoCuentaComponent,
+    canActivate: [AuthService]
   }
 ];
 
@@ -78,24 +77,20 @@ const appRoutes: Routes = [
     HomeComponent
   ],
   imports: [
-       
     MaterialModule,
     BrowserModule,
-  
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    FormsModule,RouterModule.forRoot(
+    FormsModule, RouterModule.forRoot(
       appRoutes,
       { enableTracing: false }
     ),
-    BrowserAnimationsModule,
     HttpModule,
-    JsonpModule,
-    NoopAnimationsModule ,
+    NoopAnimationsModule,
     MdButtonModule,
-     MdCheckboxModule
+    MdCheckboxModule
   ],
-  providers: [AuthService,ComparendoService, EmailService, TelefonoService],
+  providers: [AuthService, ComparendoService, EmailService, TelefonoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
