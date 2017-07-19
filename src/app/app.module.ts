@@ -22,7 +22,9 @@ import { JwtService } from './services/jwt.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { VehiculosService } from './services/vehiculos.service';
 import { DetalleVehiculoComponent } from './detalle-vehiculo/detalle-vehiculo.component';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgPipesModule } from 'ngx-pipes';
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
 const appRoutes: Routes = [
   {
@@ -82,9 +84,11 @@ const appRoutes: Routes = [
     ),
     HttpModule,
     NgbModule.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgPipesModule,
+    InfiniteScrollModule
   ],
-  providers: [AuthService, ComparendoService, EmailService, TelefonoService, JwtService,VehiculosService],
+  providers: [AuthService, ComparendoService, EmailService, TelefonoService, JwtService, VehiculosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

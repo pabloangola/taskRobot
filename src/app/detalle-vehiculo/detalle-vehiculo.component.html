@@ -1,11 +1,50 @@
+<app-home></app-home>
 <form>
   <div class="container">
     <div class="row">
-      <h5 class="col-12">Detalles del Vehiculo: <b>{{placa}}</b></h5>
+      <h4 class="col-12">Detalles del Vehiculo: <b>{{placa}}</b></h4>
     </div>
     <div class="row">
-      <div *ngFor="let comparendo of comparendos" class="col-sm-12 col-md-8 col-lg-8">
-        ${{comparendo.total | number:'.2-2'}}
+      <div class="col-12">
+        <table class="table table-striped">
+          <thead>
+            <tr class="bg-primary">
+              <th colspan="4">
+                Comparendos Vigentes
+              </th>
+            </tr>
+            <tr>
+              <th>
+                Comparendo
+              </th>
+              <th>
+                Ubicacion
+              </th>
+              <th>
+                Codigo
+              </th>
+              <th>
+                Valor
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let comparendo of comparendos">
+              <td>
+                {{comparendo.numero}}
+              </td>
+              <td>
+                {{comparendo.direccion}}
+              </td>
+              <td>
+                {{comparendo.codigo}}
+              </td>
+              <td>
+                {{comparendo.total}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

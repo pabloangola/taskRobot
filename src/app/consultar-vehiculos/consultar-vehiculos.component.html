@@ -1,59 +1,52 @@
 <app-home></app-home>
-<div class="container">
+<div class="container justify-content-md-center justify-content-sm-center justify-content-lg-center">
   <div class="row">
-    <h4 class="col-12">Consultar Vehículos</h4>
-    <div class="col-12">
+    <h4 class="col-xs-12 col-md-12 col-sm-12 col-lg-12">Consultar Vehículos</h4>
+    <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
       <div class="row">
-        <div class="col-md-6 col-sm-12 col-lg-6 padding-header">
+        <div class="col-md-4 col-sm-12 col-lg-4 padding-header">
           <b>Total ponderado: </b> $ {{totalPonderado | number:'.2-2'}}
         </div>
-        <div class="col-md-6 col-sm-12 col-lg-6 padding-header">
+        <div class="col-md-4 col-sm-12 col-lg-4 padding-header">
           <b>Numero de Comparendos: </b> {{totalComparendos}}
+        </div>
+        <div class="col-md-4 col-sm-12 col-lg-4 padding-header">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Busqueda por Placa" (keyup)="filtrarTabla(this.value)" name="filtro"
+              [(ngModel)]="filtro" maxlength="6">
+            <span class="input-group-addon" id="basic-addon1"><i class="material-icons filter-icon">search</i></span>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-12">
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 search-results" infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="15">
       <table class="table">
-        <thead class="thead-inverse">
-          <tr>
-            <th>Placa</th>
-            <th>Sitio Registro</th>
-            <th>Usuario</th>
-            <th>N° Comparendos</th>
-            <th>Detalle</th>
-          </tr>
-        </thead>
-        <tbody class="text-white">
-          <tr *ngFor="let vehiculo of vehiculos | paginate: { itemsPerPage: 5, currentPage: pagina}; let i = index">
+        <tbody>
+          <tr *ngFor="let vehiculo of vehiculos ; let i = index">
             <td>
-              <a>{{vehiculo.placa}}</a>
-            </td>
-            <td>
-              <span *ngIf="vehiculo.lugarExpedicion != null">{{vehiculo.lugarExpedicion}}</span>
-              <span *ngIf="vehiculo.lugarExpedicion == null">---</span>
-            </td>
-            <td>
-              <a (click)="showUserModal(i)" *ngIf="vehiculo.usuario != null"> {{vehiculo.usuario.nombre}} {{vehiculo.usuario.apellido}} </a>
-              <span *ngIf="vehiculo.usuario == null">---</span>
-            </td>
-            <td *ngIf="vehiculo.comparendos != null">
-              {{vehiculo.comparendos.length}}
-            </td>
-            <td class="center-align" *ngIf="vehiculo.comparendos != null">
-              <button type="button" class="btn btn-primary btn-small rounded-circle" (click)="detalleVehiculo(vehiculo.placa)"> <i class="large material-icons">search</i></button>
+              <div class="row">
+                <div class="col-md-6 col-xs-6">
+                  {{vehiculo.licensePlate}}
+                  <br>
+                  <span *ngIf="vehiculo.financeSecretariat != null">{{vehiculo.financeSecretariat}}</span>
+                </div>
+                <div class="col-md-6 col-xs-6 text-right" *ngIf="vehiculo.taxes != null">
+                  <button class="btn" (click)="detalleVehiculo(vehiculo.licensePlate)">
+                    <i class="material-icons filter-icon">description</i>{{vehiculo.taxes.length}}
+                  </button>
+                </div>
+              </div>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div class="col-md-6 offset-md-3">
-      <ngb-pagination [collectionSize]="vehiculos.length" [maxSize]="10" [(page)]="pagina" [boundaryLinks]="true"></ngb-pagination>
-    </div>
   </div>
-  <div class="row">
-    <div class="col-md-2 offset-md-10">
+  <br>
+  <div class="row text-right">
+    <div class="col-md-12">
       <button class="btn btn-primary">Enviar Reporte</button>
     </div>
   </div>
