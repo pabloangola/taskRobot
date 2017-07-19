@@ -25,10 +25,12 @@
     "@angular/router": "^4.0.0",
     "angular2-datatable-pagination": "0.0.3",
     "angular2-materialize": "^15.0.4",
+    "bootstrap-sass": "^3.3.7",
     "core-js": "^2.4.1",
     "material": "^0.1.1",
     "materialize-css": "^0.99.0",
     "md-menu": "0.0.1-alpha.1",
+    "ng2-bootstrap": "^1.6.3",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },

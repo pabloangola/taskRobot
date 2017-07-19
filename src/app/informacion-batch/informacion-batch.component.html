@@ -1,55 +1,30 @@
-<style type="text/css">
-  .section h5 {
-    font-size: 1.2rem;
-    padding-bottom: 0.2rem;
-    border-bottom: 3px solid #00bcd4;
-    ;
-  }
-
-  blockquote {
-
-    border-left: 5px solid #00bcd4;
-    /* Just change the color value and that's it*/
-  }
-</style>
-
 <app-home></app-home>
-<div class="container">
+<div class="container-fluid">
   <div class="section">
+    <div class="bs-callout bs-callout-default">
+      <h4>Obtener Información Batch</h4>
+      <br>
+    <form method="POST" action="#" enctype="multipart/form-data">
+	<!-- COMPONENT START -->
+	<div class="form-group">
+		<div class="input-group input-file" name="Fichier1">
+			<span class="input-group-btn">
+        		<button class="btn btn-default btn-choose" type="button">Choose</button>
+    		</span>
+    		<input type="text" class="form-control" placeholder='Choose a file...' />
+    		<span class="input-group-btn">
+       			 <button class="btn btn-warning btn-reset" type="button">Reset</button>
+    		</span>
+		</div>
+	</div>
+	<!-- COMPONENT END -->
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary pull-right" disabled>Submit</button>
+		<button type="reset" class="btn btn-danger">Reset</button>
+	</div>
+    
+</form>
 
-    <button md-menu-item>Item 1</button>
-    <button md-menu-item>Item 2</button>
-    <div class="row">
-      <div class="col s12 m12 l12">
-        <div class="card-panel hoverable">
-          <h4 class="header2">Obtener Información Batch </h4>
-          <div class="row">
-            <form class="col s12">
-              <div class="row">
-                <div class="file-field input-field col s12">
-                  <div class="btn">
-                    <span>Seleccionar Archivo</span>
-                    <input type="file">
-                  </div>
-                  <div class="file-path-wrapper">
-
-                    <input class="ng-hide" id="input-file-id" multiple type="file" />
-                    <label for="input-file-id" class="md-button md-raised md-primary"></label>
-
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="row">
-                  <div class="input-field col s12">
-
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>

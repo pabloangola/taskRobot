@@ -18,7 +18,9 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { ComparendoService } from './services/comparendo.service';
 import { EmailService } from './services/email.service';
 import { TelefonoService } from './services/telefono.service';
+import { JwtService } from './services/jwt.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+ 
 
 const appRoutes: Routes = [
   {
@@ -84,7 +86,7 @@ const appRoutes: Routes = [
     HttpModule,
     NgbModule.forRoot()
   ],
-  providers: [AuthService, ComparendoService, EmailService, TelefonoService],
+  providers: [AuthService, ComparendoService, EmailService, TelefonoService, JwtService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

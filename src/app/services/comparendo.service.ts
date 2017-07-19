@@ -10,8 +10,8 @@ export class ComparendoService {
 
   constructor(private http: Http) { }
 
-  urlBase = "http://192.168.1.113:8080"
-
+  urlBase = "http://192.168.0.104:8080"
+//  urlBase = "http://192.168.0.104:8080/login"
   getComparendo(params): Observable<Comparendo[]> {
 
     let body = JSON.stringify(params);
