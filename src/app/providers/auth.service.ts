@@ -4,9 +4,7 @@ import { Router, CanActivate } from '@angular/router';
 @Injectable()
 export class AuthService implements CanActivate {
 
-  constructor(private router: Router) { 
-      
-   }
+  constructor(private router: Router) { }
  
     canActivate() {
         if (localStorage.getItem('currentUser')) {

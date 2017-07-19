@@ -1,0 +1,12 @@
+<form>
+  <div class="container">
+    <div class="row">
+      <h5 class="col-12">Detalles del Vehiculo: <b>{{placa}}</b></h5>
+    </div>
+    <div class="row">
+      <div *ngFor="let comparendo of comparendos" class="col-sm-12 col-md-8 col-lg-8">
+        ${{comparendo.total | number:'.2-2'}}
+      </div>
+    </div>
+  </div>
+</form>

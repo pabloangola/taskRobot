@@ -12,6 +12,4 @@ export class InformacionBatchComponent implements OnInit {
   ngOnInit() {
   }
 
-  
-
 }

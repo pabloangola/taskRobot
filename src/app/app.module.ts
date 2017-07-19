@@ -20,7 +20,9 @@ import { EmailService } from './services/email.service';
 import { TelefonoService } from './services/telefono.service';
 import { JwtService } from './services/jwt.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
- 
+import { VehiculosService } from './services/vehiculos.service';
+import { DetalleVehiculoComponent } from './detalle-vehiculo/detalle-vehiculo.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 const appRoutes: Routes = [
   {
@@ -44,6 +46,10 @@ const appRoutes: Routes = [
     component: AsociarVehiculosComponent
   },
   {
+    path: 'detalle-vehiculo/:placa',
+    component: DetalleVehiculoComponent
+  },
+  {
     path: 'home',
     component: HomeComponent
   },
@@ -51,16 +57,6 @@ const appRoutes: Routes = [
     path: '',
     redirectTo: '/login',
     pathMatch: 'full'
-  },
-  {
-    path: 'consultarVehiculos',
-    component: ConsultarVehiculosComponent,
-    canActivate: [AuthService]
-  },
-  {
-    path: 'estadoCuenta',
-    component: EstadoCuentaComponent,
-    canActivate: [AuthService]
   }
 ];
 
@@ -73,7 +69,8 @@ const appRoutes: Routes = [
     ConsultarVehiculosComponent,
     AsociarVehiculosComponent,
     InformacionBatchComponent,
-    HomeComponent
+    HomeComponent,
+    DetalleVehiculoComponent
   ],
   imports: [
     BrowserModule,
@@ -84,9 +81,10 @@ const appRoutes: Routes = [
       { enableTracing: false }
     ),
     HttpModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    NgxPaginationModule
   ],
-  providers: [AuthService, ComparendoService, EmailService, TelefonoService, JwtService],
+  providers: [AuthService, ComparendoService, EmailService, TelefonoService, JwtService,VehiculosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

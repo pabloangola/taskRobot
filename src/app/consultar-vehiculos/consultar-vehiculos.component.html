@@ -1,169 +1,60 @@
-<style type="text/css">
-  .section h5 {
-    font-size: 1.2rem;
-    padding-bottom: 0.2rem;
-    border-bottom: 3px solid #00bcd4;
-    ;
-  }
-
-  blockquote {
-
-    border-left: 5px solid #00bcd4;
-    /* Just change the color value and that's it*/
-  }
-</style>
-
- <app-home></app-home>
+<app-home></app-home>
 <div class="container">
-  <div class="section">
-   
-    <!--Form Advance-->
-    <div class="row">
-      <div class="col s12 m12 l12">
-        <div class="card-panel hoverable">
-          <h4 class="header2">Consultar Vehículos</h4>
-          <h6>Agregar o Modificar un propietario</h6>
-          <div class="divider"></div><br>
-          <div class="row">
-            <form class="col s12">
-              <blockquote>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input id="first_name" type="text">
-                    <label for="first_name">No. de indentificación</label>
-                  </div>
-
-                  <div class="input-field col s12">
-                    <input id="last_name" type="text">
-                    <label for="last_name">Nombre </label>
-                  </div>
-
-                  <div class="input-field col s12">
-                    <input id="email" type="email">
-                    <label for="email">Email</label>
-                  </div>
-
-
-                  <div class="input-field col s12">
-                    <input id="telefono" type="tel">
-                    <label for="telefono">No. de Telefono</label>
-                  </div>
-
-                </div>
-              </blockquote>
-
-              <div class="row">
-
-                <div class="row">
-                  <div class="input-field col s12">
-                    <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Submit
-                            <i class="mdi-content-send right"></i>
-                          </button>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="row" *ngIf="vehiculos.size > 0">
-                <h5>Vehiculos del Cliente</h5>
-                <div class="input-field col s12">
-                  <table class="responsive-table  striped " >
-                    <thead>
-                      <tr>
-                        <th>Placa</th>
-                        <th>Modelo</th>
-                        <th>Tipo</th>
-                        <th>Marca</th>
-                        <th>Año</th>
-                        <th>Sitio Registro</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let vehiculo of vehiculos">
-                        <td>
-                          vehiculo.placa
-                        </td>
-                        <td>
-                          vehiculo.modelo
-                        </td>
-                        <td>
-                          vehiculo.tipo
-                        </td>
-                        <td>
-                          vehiculo.marca
-                        </td>
-                        <td>
-                          vehiculo.año
-                        </td>
-                        <td>
-                          vehiculo.sitio
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <h5>Vehiculos Disponibles</h5>
-              <div class="row">
-                <div class="input-field col s12">
-                  <table class="responsive-table  striped ">
-                    <thead>
-                      <tr>
-                        <th>Placa</th>
-                        <th>Modelo</th>
-                        <th>Tipo</th>
-                        <th>Marca</th>
-                        <th>Año</th>
-                        <th>Sitio Registro</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>ADL-109</td>
-                        <td>ML500</td>
-                        <td>Carretera</td>
-                        <td>Mercedes-Bendz</td>
-                        <td>2015</td>
-                        <td>Bogota</td>
-                      </tr>
-                      <tr>
-                        <td>ADL-109</td>
-                        <td>ML500</td>
-                        <td>Carretera</td>
-                        <td>Mercedes-Bendz</td>
-                        <td>2015</td>
-                        <td>Bogota</td>
-                      </tr>
-                      <tr>
-                        <td>ADL-109</td>
-                        <td>ML500</td>
-                        <td>Carretera</td>
-                        <td>Mercedes-Bendz</td>
-                        <td>2015</td>
-                        <td>Bogota</td>
-                      </tr>
-                      <tr>
-                        <td>ADL-109</td>
-                        <td>ML500</td>
-                        <td>Carretera</td>
-                        <td>Mercedes-Bendz</td>
-                        <td>2015</td>
-                        <td>Bogota</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </form>
-          </div>
+  <div class="row">
+    <h4 class="col-12">Consultar Vehículos</h4>
+    <div class="col-12">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 col-lg-6 padding-header">
+          <b>Total ponderado: </b> $ {{totalPonderado | number:'.2-2'}}
+        </div>
+        <div class="col-md-6 col-sm-12 col-lg-6 padding-header">
+          <b>Numero de Comparendos: </b> {{totalComparendos}}
         </div>
       </div>
     </div>
   </div>
-
- 
-  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-  <script>
-    $(".button-collapse").sideNav();
-  </script>
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Placa</th>
+            <th>Sitio Registro</th>
+            <th>Usuario</th>
+            <th>N° Comparendos</th>
+            <th>Detalle</th>
+          </tr>
+        </thead>
+        <tbody class="text-white">
+          <tr *ngFor="let vehiculo of vehiculos | paginate: { itemsPerPage: 5, currentPage: pagina}; let i = index">
+            <td>
+              <a>{{vehiculo.placa}}</a>
+            </td>
+            <td>
+              <span *ngIf="vehiculo.lugarExpedicion != null">{{vehiculo.lugarExpedicion}}</span>
+              <span *ngIf="vehiculo.lugarExpedicion == null">---</span>
+            </td>
+            <td>
+              <a (click)="showUserModal(i)" *ngIf="vehiculo.usuario != null"> {{vehiculo.usuario.nombre}} {{vehiculo.usuario.apellido}} </a>
+              <span *ngIf="vehiculo.usuario == null">---</span>
+            </td>
+            <td *ngIf="vehiculo.comparendos != null">
+              {{vehiculo.comparendos.length}}
+            </td>
+            <td class="center-align" *ngIf="vehiculo.comparendos != null">
+              <button type="button" class="btn btn-primary btn-small rounded-circle" (click)="detalleVehiculo(vehiculo.placa)"> <i class="large material-icons">search</i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6 offset-md-3">
+      <ngb-pagination [collectionSize]="vehiculos.length" [maxSize]="10" [(page)]="pagina" [boundaryLinks]="true"></ngb-pagination>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 offset-md-10">
+      <button class="btn btn-primary">Enviar Reporte</button>
+    </div>
+  </div>
+</div>
