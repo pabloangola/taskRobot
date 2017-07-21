@@ -1,35 +1,12 @@
-<app-home></app-home>
+<app-home>
+</app-home>
+ 
 <div class="container-fluid">
   <div class="section">
     <div class="bs-callout bs-callout-default">
-      <h4>Obtener Información Batch</h4>
-      <br>
-    <form method="POST" action="#" enctype="multipart/form-data">
-	<!-- COMPONENT START -->
-	<div class="form-group">
-		<div class="input-group input-file" name="Fichier1">
-			<span class="input-group-btn">
-        		<button class="btn btn-default btn-choose" type="button">Choose</button>
-    		</span>
-    		<input type="text" class="form-control" placeholder='Choose a file...' />
-    		<span class="input-group-btn">
-       			 <button class="btn btn-warning btn-reset" type="button">Reset</button>
-    		</span>
-		</div>
-	</div>
-	<!-- COMPONENT END -->
-	<div class="form-group">
-		<button type="submit" class="btn btn-primary pull-right" disabled>Submit</button>
-		<button type="reset" class="btn btn-danger">Reset</button>
-	</div>
-    
-</form>
+      <h4> Información Bach </h4>
+      <ng2-file-input [multiple]="'true'" [remove-text]="'Remover'" [browse-text]="'Seleccionar'" [drop-text]="'Arrastre el archivo'">sss</ng2-file-input>
 
     </div>
   </div>
-  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-  <script>
-    $(".button-collapse").sideNav();
-  </script>
+</div>

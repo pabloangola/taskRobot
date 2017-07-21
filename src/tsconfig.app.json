@@ -1,11 +1,17 @@
-{
+{"types": [
+      "node"
+    ],
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
     "module": "es2015",
     "baseUrl": "",
-    "types": []
+    "types": [ "node" ],
+    "typeRoots": [ "../node_modules/@types" ]
+   
   },
+  
+  "paths": { "fileapi": ["../node_modules/fileapi/dist/FileAPI.html5.min.js"] },
   "exclude": [
     "test.ts",
     "**/*.spec.ts"

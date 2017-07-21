@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         jwtRequestObject.token = token;
         jwtService.sendToken(jwtRequestObject).subscribe();
         localStorage.setItem('currentUser', user.uid);
-        router.navigate(['/consultar-vehiculos']);
+        router.navigate(['/dashboard']);
       });
     }).catch(function (error) {
       var errorMessage = error.message;

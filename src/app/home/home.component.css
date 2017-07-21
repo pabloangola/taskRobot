@@ -1,3 +1,62 @@
 .navbar {
     margin-bottom: 0;
 }
+ 
+ .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+color: white;  /*Sets the text hover color on navbar*/
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >   
+ a:hover, .navbar-default .navbar-nav > .active > a:focus {
+color: white; /*BACKGROUND color for active*/
+background-color: rgb(109,179,242); 
+background-color: #030033;
+
+}
+
+  .navbar-default {
+   background: rgba(72,204,234,1);
+background: -moz-linear-gradient(left, rgba(72,204,234,1) 11%, rgba(31,183,229,1) 69%, rgba(32,124,229,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(11%, rgba(72,204,234,1)), color-stop(69%, rgba(31,183,229,1)), color-stop(100%, rgba(32,124,229,1)));
+background: -webkit-linear-gradient(left, rgba(72,204,234,1) 11%, rgba(31,183,229,1) 69%, rgba(32,124,229,1) 100%);
+background: -o-linear-gradient(left, rgba(72,204,234,1) 11%, rgba(31,183,229,1) 69%, rgba(32,124,229,1) 100%);
+background: -ms-linear-gradient(left, rgba(72,204,234,1) 11%, rgba(31,183,229,1) 69%, rgba(32,124,229,1) 100%);
+background: linear-gradient(to right, rgba(72,204,234,1) 11%, rgba(31,183,229,1) 69%, rgba(32,124,229,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#48ccea', endColorstr='#207ce5', GradientType=1 );
+   
+   
+    border-color:  rgba(72,204,234,1);
+}
+
+  .dropdown-menu > li > a:hover,
+   .dropdown-menu > li > a:focus {
+    color: #262626;
+   text-decoration: none;
+  background-color: #66CCFF;  /*change color of links in drop down here*/
+   }
+
+ .nav > li > a:hover,
+ .nav > li > a:focus {
+    text-decoration: none;
+    background-color: rgba(32,124,229,1) ; /*Change rollover cell color here*/
+  }
+
+
+  .navbar-default .navbar-nav > li > a {
+   color: white; /*Change active text color here*/
+    }
+
+   
+ 
+   .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+   background: rgba(32,124,229,1);
+        
+}
+
+  .navbar-inverse .navbar-toggle {
+    border-color: rgba(32,124,229,1);
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: rgba(31,183,229,1)
+}
