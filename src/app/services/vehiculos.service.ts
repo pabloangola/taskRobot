@@ -11,14 +11,22 @@ export class VehiculosService {
 
   urlBase = "http://35.197.37.143:8082"
 
-  getVehiculo(params): Observable<Vehiculo[]> {
+  listarVehiculos(params): Observable<Vehiculo[]> {
 
-    let body = JSON.stringify(params);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
     return this.http.get(this.urlBase + "/vehicles", options)
       .map((res: Response) => res.json() as Vehiculo[])
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  detalleVehiculo(placa): Observable<Vehiculo> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.get(this.urlBase + "/vehicles/" + placa, options)
+      .map((res: Response) => res.json() as Vehiculo)
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 

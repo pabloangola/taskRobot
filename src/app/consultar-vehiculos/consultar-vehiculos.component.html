@@ -21,6 +21,7 @@
     </div>
   </div>
   <div class="row">
+    <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
     <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 search-results" infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="15">
       <table class="table">
         <tbody>
@@ -47,7 +48,7 @@
   <br>
   <div class="row text-right">
     <div class="col-md-12">
-      <button class="btn btn-primary">Enviar Reporte</button>
+      <button class="btn btn-primary col-xs-12 col-sm-2 col-md-2 col-lg-2 pull-right" (click)="notificarComparendos()">Enviar Reporte</button>
     </div>
   </div>
 </div>

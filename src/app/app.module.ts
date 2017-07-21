@@ -1,43 +1,41 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { HttpModule, JsonpModule } from '@angular/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-
-
-import { ComparendoService } from './services/comparendo.service';
-import { EmailService } from './services/email.service';
-import { TelefonoService } from './services/telefono.service';
-import { JwtService } from './services/jwt.service';
-import { VehiculosService } from './services/vehiculos.service';
-
+import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { RouterModule, Routes } from '@angular/router';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
+import { FormsModule } from '@angular/forms';
 import { EstadoCuentaComponent } from './estado-cuenta/estado-cuenta.component';
 import { ConsultarVehiculosComponent } from './consultar-vehiculos/consultar-vehiculos.component';
 import { AsociarVehiculosComponent } from './asociar-vehiculos/asociar-vehiculos.component';
 import { InformacionBatchComponent } from './informacion-batch/informacion-batch.component';
-import { AppComponent } from './app.component';
-import { DetalleVehiculoComponent } from './detalle-vehiculo/detalle-vehiculo.component';
-import { HomeComponent } from './home/home.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { environment } from '../environments/environment';
 import { AuthService } from './providers/auth.service';
+import { HomeComponent } from './home/home.component';
+import { HttpModule, JsonpModule } from '@angular/http';
+import { ComparendoService } from './services/comparendo.service';
+import { EmailService } from './services/email.service';
+import { TelefonoService } from './services/telefono.service';
+import { JwtService } from './services/jwt.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { VehiculosService } from './services/vehiculos.service';
+import { DetalleVehiculoComponent } from './detalle-vehiculo/detalle-vehiculo.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgPipesModule } from 'ngx-pipes';
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
+import { DetalleComparendoComponent } from './detalle-comparendo/detalle-comparendo.component';
+import { AgregarVehiculoComponent } from './agregar-vehiculo/agregar-vehiculo.component';
+
+import 'd3';
+import 'nvd3';
 
 import { ChartModule } from 'angular2-highcharts';
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 import { Ng2FileInputModule } from 'ng2-file-input';
 import { NvD3Component } from 'ng2-nvd3';
-import { NgPipesModule } from 'ngx-pipes';
-import { InfiniteScrollModule } from 'angular2-infinite-scroll';
-
-import 'd3';
-import 'nvd3';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const appRoutes: Routes = [
   {
@@ -63,6 +61,10 @@ const appRoutes: Routes = [
   {
     path: 'detalle-vehiculo/:placa',
     component: DetalleVehiculoComponent
+  },
+  {
+    path: 'agregar-vehiculo',
+    component: AgregarVehiculoComponent
   },
   {
     path: 'home',
@@ -99,7 +101,9 @@ export function highchartsFactory() {
     InformacionBatchComponent,
     HomeComponent,
     DetalleVehiculoComponent,
-    DashboardComponent,
+    DetalleComparendoComponent,
+    AgregarVehiculoComponent,
+        DashboardComponent,
     NvD3Component
   ],
   imports: [
@@ -113,9 +117,10 @@ export function highchartsFactory() {
     ),
     HttpModule, NgbModule,
     NgbModule.forRoot(),
-    Ng2FileInputModule.forRoot(),
+    NgxPaginationModule,
     NgPipesModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+        Ng2FileInputModule.forRoot(),
   ],
   providers: [AuthService, ComparendoService, EmailService, TelefonoService, JwtService, VehiculosService,
     {

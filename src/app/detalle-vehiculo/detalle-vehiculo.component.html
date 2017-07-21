@@ -2,45 +2,47 @@
 <form>
   <div class="container">
     <div class="row">
-      <h4 class="col-12">Detalles del Vehiculo: <b>{{placa}}</b></h4>
+      <h4 class="col-md-12 col-sm-12 col-lg-12 col-xs-12">Vehiculo: <b>{{placa}}</b></h4>
     </div>
+    <ngb-alert [dismissible]="false" type="danger" *ngIf="errorVehiculo">
+      <i class="material-icons filter-icon">warning</i> Error al consultar la informacion del usuario.
+    </ngb-alert>
+    <div class="row" *ngIf="vehiculo != null">
+      <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+        <fieldset class="border padding">
+          {{vehiculo.customer.firstName}} {{vehiculo.customer.surname}}<br> {{vehiculo.customer.email}}
+          <br> {{vehiculo.customer.cellPhone}}
+          <br>
+          <b>Total adeudado: </b> $ {{totalAdeudado | number:'.2-2'}}
+        </fieldset>
+      </div>
+    </div>
+    <br>
     <div class="row">
-      <div class="col-12">
-        <table class="table table-striped">
+      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 search-results" infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="15">
+        <table class="table table-bordered table-striped">
           <thead>
             <tr class="bg-primary">
-              <th colspan="4">
-                Comparendos Vigentes
-              </th>
-            </tr>
-            <tr>
-              <th>
-                Comparendo
-              </th>
-              <th>
-                Ubicacion
-              </th>
-              <th>
-                Codigo
-              </th>
-              <th>
-                Valor
+              <th colspan="2">
+                Comparendos
               </th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let comparendo of comparendos">
               <td>
-                {{comparendo.numero}}
-              </td>
-              <td>
-                {{comparendo.direccion}}
-              </td>
-              <td>
-                {{comparendo.codigo}}
-              </td>
-              <td>
-                {{comparendo.total}}
+                <div class="row">
+                  <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                    <!--{{comparendo.codigo}} -->
+                    <p class="text-danger">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </p>
+                    <b class="text-danger">$ {{comparendo.total | number:'.2-2'}}</b>
+                  </div>
+                  <div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+                    <button class="btn pull-right">
+                      <i class="material-icons filter-icon">search</i>
+                    </button>
+                  </div>
+                </div>
               </td>
             </tr>
           </tbody>
