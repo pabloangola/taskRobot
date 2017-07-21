@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private jwtService: JwtService) {
   }
-  
+
   forgetPassword() {
     firebase.auth().sendPasswordResetEmail(this.forgetEmail).then(function () {
 

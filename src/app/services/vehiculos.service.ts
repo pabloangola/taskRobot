@@ -17,7 +17,7 @@ export class VehiculosService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(this.urlBase + "/vehiculos", body, options)
+    return this.http.get(this.urlBase + "/vehicles", options)
       .map((res: Response) => res.json() as Vehiculo[])
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }

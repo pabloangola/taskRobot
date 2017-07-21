@@ -1,14 +1,16 @@
 import { Comparendo } from './comparendo';
 export class Vehiculo {
-    placa: string;
-    usuario: Usuario;
-    lugarExpedicion: string;
-    comparendos:Comparendo[];
+    licensePlate: string;
+    financeSecretariat:string;
+    customer: Customer;
+    taxes:Comparendo[];
 }
 
-export class Usuario {
-    nombre: string;
-    apellido: string;
-    correo: string;
-    celular: string;
+export class Customer {
+    idType: string;
+    idNumber: string;
+    firstName: string;
+    surname: string;
+    email: string;
+    cellPhone: string;
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { Vehiculo, Usuario } from '../dto/vehiculoResponse';
+import { Vehiculo } from '../dto/vehiculoResponse';
 import { VehiculosService } from '../services/vehiculos.service';
 import { ComparendoService } from '../services/comparendo.service';
 import { Comparendo } from '../dto/comparendo';
@@ -17,11 +17,11 @@ export class ConsultarVehiculosComponent implements OnInit {
 
   vehiculos: Vehiculo[] = [];
   comparendosVisibles: Comparendo[] = [];
-  usuarioVisible: Usuario = new Usuario();
   totalPonderado: number = 0;
   totalComparendos: number = 0;
-  totalDeRegistros: number = 0;
   pagina: number = 1;
+  filtro: string;
+  vehiculosTotales: Vehiculo[] = [];
 
   ngOnInit() {
     let body = {};
@@ -33,34 +33,31 @@ export class ConsultarVehiculosComponent implements OnInit {
       });
   }
   detalleVehiculo(placa) {
-    this.router.navigate(['/detalle-vehiculo',placa]);
-  }
-  showUserModal(index) {
-    this.usuarioVisible = this.vehiculos[index].usuario;
-
+    this.router.navigate(['/detalle-vehiculo', placa]);
   }
   searchComparendo() {
     var comparendoRequest: ComparendoRequest = new ComparendoRequest();
     comparendoRequest.numero = "8909039388";
     comparendoRequest.tipo = 4;
+    comparendoRequest.placas = [];
 
     this.comparendoService.getComparendo(comparendoRequest).subscribe(res => {
       res.forEach(comparendo => {
         var existePropietario: boolean = false;
         this.vehiculos.forEach(vehiculo => {
-          if (comparendo.placaVehiculo == vehiculo.placa) {
+          if (comparendo.placaVehiculo == vehiculo.licensePlate) {
             existePropietario = true;
-            if (vehiculo.comparendos == null) {
-              vehiculo.comparendos = [];
+            if (vehiculo.taxes == null) {
+              vehiculo.taxes = [];
             }
-            vehiculo.comparendos.push(comparendo);
+            vehiculo.taxes.push(comparendo);
           }
         });
         if (!existePropietario) {
           var vehiculoNoVinculado: Vehiculo = new Vehiculo();
-          vehiculoNoVinculado.placa = comparendo.placaVehiculo;
-          vehiculoNoVinculado.comparendos = [];
-          vehiculoNoVinculado.comparendos.push(comparendo);
+          vehiculoNoVinculado.licensePlate = comparendo.placaVehiculo;
+          vehiculoNoVinculado.taxes = [];
+          vehiculoNoVinculado.taxes.push(comparendo);
           this.vehiculos.push(vehiculoNoVinculado);
         }
         this.totalComparendos++;
@@ -68,12 +65,21 @@ export class ConsultarVehiculosComponent implements OnInit {
       });
       var index: number = 0;
       this.vehiculos.forEach(vehiculo => {
-        if (vehiculo.comparendos == null) {
+        if (vehiculo.taxes == null) {
           this.vehiculos.splice(index, 1);
         }
         index++;
       });
-      this.totalDeRegistros = this.vehiculos.length;
+      this.vehiculosTotales.push.apply(this.vehiculosTotales, this.vehiculos);
+    });
+  }
+
+  filtrarTabla() {
+    this.vehiculos = [];
+    this.vehiculosTotales.forEach(vehiculo => {
+      if (vehiculo.licensePlate.indexOf(this.filtro.toUpperCase()) >= 0) {
+        this.vehiculos.push(vehiculo);
+      }
     });
   }
 }

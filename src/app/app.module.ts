@@ -31,9 +31,10 @@ import { AuthService } from './providers/auth.service';
 
 import { ChartModule } from 'angular2-highcharts';
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2FileInputModule } from 'ng2-file-input';
 import { NvD3Component } from 'ng2-nvd3';
+import { NgPipesModule } from 'ngx-pipes';
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
 import 'd3';
 import 'nvd3';
@@ -113,8 +114,8 @@ export function highchartsFactory() {
     HttpModule, NgbModule,
     NgbModule.forRoot(),
     Ng2FileInputModule.forRoot(),
-    NgxPaginationModule,
-
+    NgPipesModule,
+    InfiniteScrollModule
   ],
   providers: [AuthService, ComparendoService, EmailService, TelefonoService, JwtService, VehiculosService,
     {
