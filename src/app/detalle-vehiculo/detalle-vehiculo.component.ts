@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ComparendoService } from '../services/comparendo.service';
 import { Comparendo } from '../dto/comparendo';
 import { ComparendoRequest } from '../dto/comparendoRequest';
@@ -15,13 +15,14 @@ export class DetalleVehiculoComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private comparendoService: ComparendoService,
-    private vehiculosService: VehiculosService) { }
+    private vehiculosService: VehiculosService,
+    private router: Router) { }
 
   placa;
   comparendos: Comparendo[] = [];
   vehiculo: Vehiculo;
   totalAdeudado: number = 0;
-  errorVehiculo:boolean = false;
+  errorVehiculo: boolean = false;
 
   ngOnInit() {
     var sub = this.route.params.subscribe(params => {
@@ -48,5 +49,8 @@ export class DetalleVehiculoComponent implements OnInit {
 
       this
     });
+  }
+  detalleNotificaciones(comparendo) {
+    this.router.navigate(['/detalle-notificacion', comparendo]);
   }
 }

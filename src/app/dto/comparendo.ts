@@ -11,7 +11,6 @@ export class Comparendo {
     placaVehiculo:string;
     tipoVehiculo:string;
     servicioVehiculo:string;
-    email:string;
 }
 
 export class Identificacion{

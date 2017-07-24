@@ -10,8 +10,9 @@
     <div class="row" *ngIf="vehiculo != null">
       <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
         <fieldset class="border padding">
-          {{vehiculo.customer.firstName}} {{vehiculo.customer.surname}}<br> {{vehiculo.customer.email}}
-          <br> {{vehiculo.customer.cellPhone}}
+          <b>Nombre:</b> {{vehiculo.customer.firstName}} {{vehiculo.customer.surname}}
+          <br><b>Correo:</b> {{vehiculo.customer.email}}
+          <br><b> Telefono:</b> {{vehiculo.customer.cellPhone}}
           <br>
           <b>Total adeudado: </b> $ {{totalAdeudado | number:'.2-2'}}
         </fieldset>
@@ -32,17 +33,25 @@
             <tr *ngFor="let comparendo of comparendos">
               <td>
                 <div class="row">
-                  <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                  <div class="col-sm-6 col-xs-12 col-md-6 col-lg-6">
                     <!--{{comparendo.codigo}} -->
-                    <p class="text-danger">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </p>
-                    <b class="text-danger">$ {{comparendo.total | number:'.2-2'}}</b>
+                    <p class="text-danger">Infraccion: XXXXXXXXXXXXXX</p>
+                    <b class="text-danger">Valor: $ {{comparendo.total | number:'.2-2'}}</b>
+                    <p class="text-danger">Estado: {{comparendo.estado}}</p>
+                    <p class="text-danger">Fecha de radicacion: {{comparendo.fecha}}</p>
                   </div>
-                  <div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
-                    <button class="btn pull-right">
+                  <div class="col-sm-6 col-xs-12 col-md-6 col-lg-6">
+                    <b class="text-danger">Valor: $ {{comparendo.total | number:'.2-2'}}</b>
+                    <button class="btn pull-right" (click)="detalleNotificaciones(comparendo.numero)">
                       <i class="material-icons filter-icon">search</i>
                     </button>
                   </div>
                 </div>
+              </td>
+            </tr>
+            <tr *ngIf="comparendos.length == 0">
+              <td colspan="4">
+                <span><b>No se han encontrado resultados</b></span>
               </td>
             </tr>
           </tbody>
