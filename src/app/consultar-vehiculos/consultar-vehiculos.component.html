@@ -23,7 +23,7 @@
   <div class="row">
     <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
     <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 search-results" infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="15">
-      <table class="table table-bordered table-striped">
+      <table class="table table-striped">
         <thead>
           <tr class="bg-primary">
             <th>
@@ -33,7 +33,7 @@
               Ubicacion
             </th>
             <th>
-              Comparendos
+              Comparendos e Impuestos
             </th>
           </tr>
         </thead>
@@ -46,8 +46,8 @@
               <span *ngIf="vehiculo.financeSecretariat != null">{{vehiculo.financeSecretariat}}</span>
             </td>
             <td>
-              <button class="btn pull-right" (click)="detalleVehiculo(vehiculo.licensePlate)" *ngIf="vehiculo.taxes != null">
-                <i class="material-icons filter-icon">description</i>{{vehiculo.taxes.length}}
+              <button class="btn pull-right" (click)="detalleVehiculo(vehiculo.licensePlate)" *ngIf="vehiculo.duesLength != null && vehiculo.duesLength > 0">
+                <i class="material-icons filter-icon">description</i>{{vehiculo.duesLength}}
               </button>
             </td>
           </tr>
