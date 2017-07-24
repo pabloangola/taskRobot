@@ -1,18 +1,123 @@
 <app-home></app-home>
-<form>
-  <div class="container">
-    <div class="row">
-      <h4 class="col-md-12 col-sm-12 col-lg-12 col-xs-12">Agregar vehiculo</h4>
-    </div>
-    <div class="col-md-6 col-xs-12 col-lg-6 col-sm-6">
-      <div class="input-group">
-        <input class="form-control" placeholder="Nombre(s)">
+<br>
+<div class="container-fluid">
+
+  <form class="well form-horizontal" action=" " method="post" id="contact_form">
+    <fieldset>
+
+      <!-- Form Name -->
+      <legend>Contact Us Today!</legend>
+
+
+      <div class="form-group">
+        <label class="col-md-4 control-label">Placa</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="material-icons">directions_car</i></span>
+            <input name="phone" placeholder="Placa" class="form-control" type="text">
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="col-md-6 col-xs-12 col-lg-6 col-sm-6">
-      <div class="input-group">
-        <input class="form-control" placeholder="Apellidos">
+
+      <div class="form-group">
+        <label class="col-md-4 control-label">Lugar de Expedición</label>
+        <div class="col-md-4 selectContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+            <select name="state" class="form-control selectpicker">
+      <option value=" " >Lugar de Expedición</option>
+      <option>Bogotá</option>     
+    </select>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</form>
+
+
+      <div class="form-group">
+        <label class="col-md-4 control-label">Nombres</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input name="first_name" placeholder="Nombres" class="form-control" type="text">
+          </div>
+        </div>
+      </div>
+
+      <!-- Text input-->
+
+      <div class="form-group">
+        <label class="col-md-4 control-label">Apellidos</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input name="last_name" placeholder="Apellidos" class="form-control" type="text">
+          </div>
+        </div>
+      </div>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label">E-Mail</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            <input name="email" placeholder="E-Mail" class="form-control" type="text">
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Text input-->
+
+      <div class="form-group">
+        <label class="col-md-4 control-label">Teléfono</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+            <input name="phone" placeholder="(845)555-1212" class="form-control" type="text">
+          </div>
+        </div>
+      </div>
+
+      <!-- Select Basic -->
+
+      <div class="form-group">
+        <label class="col-md-4 control-label">State</label>
+        <div class="col-md-4 selectContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+            <select name="state" class="form-control selectpicker">
+      <option value=" " >Tipo de Identificación</option>
+      <option>Cedula de Ciudadanía</option>
+      <option>Cédula de Extranjería</option>
+      <option >Carné Diplomatico</option>
+     
+    </select>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-md-4 control-label">Identificación</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon  "></i></span>
+            <input name="phone" placeholder="Identificación" class="form-control" type="text">
+          </div>
+        </div>
+      </div>
+
+      <!-- Button -->
+      <div class="form-group">
+        <label class="col-md-4 control-label"></label>
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-warning">Agregar Vehiculo <span class="glyphicon glyphicon-send"></span></button>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+</div>
+
+<!-- /.container -->

@@ -9,7 +9,6 @@
         <span class="icon-bar"></span>
       </button>
           <img id="ctl00_XXX" src="/assets/image/logo.png" style="margin-top:10px;    width: 80px" />
-     
       <a class="navbar-brand" > 
      </a>
     </div>
@@ -19,7 +18,7 @@
         <li><a routerLink="/dashboard"><b>Dashboard </b></a></li>
         <li><a routerLink="/estado-cuenta" ><b>Estado de Cuenta</b></a></li>
         <li><a routerLink="/consultar-vehiculos" ><b>Consultar Vehiculos</b></a></li>
-        <li><a routerLink="/asociar-vehiculos"><b> Asociar Vehiculo</b></a></li>
+        <li><a routerLink="/agregar-vehiculo"><b> Agregar Vehiculo</b></a></li>
         <li><a routerLink="/informacion-batch"><b>Informacion Batch</b></a></li>
       </ul>
        <ul class="nav navbar-nav  navbar-right">
@@ -41,33 +40,4 @@
   </div>
   <!-- /.container-fluid -->
 </nav>
-
-
-<!--
-    <nav class="cyan">
-      <div class="nav-wrapper">
-        <a class="brand-logo"><img src="/assets/image/logo.png" width="60">   </a>
-        <button class="sidebar-collapse hide-on-large-only collapseButton" materialize="sideNav" [materializeParams]="[{edge: right,draggable: true}]"
-          [materializeActions]="sideNavActions" data-activates="slide-out">
-                <i class="small material-icons">menu</i>
-     </button>
-
-        <a></a>
-        <ul class="right hide-on-med-and-down">
-
-          <li><a routerLink="/consultar-vehiculos" routerLinkActive="active">Consultar Vehiculos</a></li>
-          <li><a routerLink="/estado-cuenta" routerLinkActive="active">Estado Cuenta</a></li>
-          <li><a routerLink="/asociar-vehiculos" routerLinkActive="active">Asociar Vehiculos</a></li>
-          <li><a routerLink="/informacion-batch" routerLinkActive="active">Informacion Batch</a></li>
-        </ul>
-        <ul class="side-nav" id="slide-out">
-          <li><a routerLink="/consultar-vehiculos" routerLinkActive="active">Consultar Vehiculos</a></li>
-          <li><a routerLink="/estado-cuenta" routerLinkActive="active">Estado Cuenta</a></li>
-          <li><a routerLink="/asociar-vehiculos" routerLinkActive="active">Asociar Vehiculos</a></li>
-          <li><a routerLink="/informacion-batch" routerLinkActive="active">Informacion Batch</a></li>
-        </ul>
-      </div>
-    </nav> -->
-
-
 <router-outlet></router-outlet>

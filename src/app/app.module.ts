@@ -10,7 +10,6 @@ import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { EstadoCuentaComponent } from './estado-cuenta/estado-cuenta.component';
 import { ConsultarVehiculosComponent } from './consultar-vehiculos/consultar-vehiculos.component';
-import { AsociarVehiculosComponent } from './asociar-vehiculos/asociar-vehiculos.component';
 import { InformacionBatchComponent } from './informacion-batch/informacion-batch.component';
 import { AuthService } from './providers/auth.service';
 import { HomeComponent } from './home/home.component';
@@ -55,10 +54,6 @@ const appRoutes: Routes = [
     component: ConsultarVehiculosComponent
   },
   {
-    path: 'asociar-vehiculos',
-    component: AsociarVehiculosComponent
-  },
-  {
     path: 'detalle-vehiculo/:placa',
     component: DetalleVehiculoComponent
   },
@@ -97,7 +92,6 @@ export function highchartsFactory() {
     LoginComponent,
     EstadoCuentaComponent,
     ConsultarVehiculosComponent,
-    AsociarVehiculosComponent,
     InformacionBatchComponent,
     HomeComponent,
     DetalleVehiculoComponent,
