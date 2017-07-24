@@ -23,22 +23,37 @@
   <div class="row">
     <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
     <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 search-results" infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="15">
-      <table class="table">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr class="bg-primary">
+            <th>
+              Placa
+            </th>
+            <th>
+              Ubicacion
+            </th>
+            <th>
+              Comparendos
+            </th>
+          </tr>
+        </thead>
         <tbody>
           <tr *ngFor="let vehiculo of vehiculos ; let i = index">
             <td>
-              <div class="row">
-                <div class="col-md-6 col-xs-6">
-                  {{vehiculo.licensePlate}}
-                  <br>
-                  <span *ngIf="vehiculo.financeSecretariat != null">{{vehiculo.financeSecretariat}}</span>
-                </div>
-                <div class="col-md-6 col-xs-6 text-right" *ngIf="vehiculo.taxes != null">
-                  <button class="btn" (click)="detalleVehiculo(vehiculo.licensePlate)">
-                    <i class="material-icons filter-icon">description</i>{{vehiculo.taxes.length}}
-                  </button>
-                </div>
-              </div>
+              {{vehiculo.licensePlate}}
+            </td>
+            <td>
+              <span *ngIf="vehiculo.financeSecretariat != null">{{vehiculo.financeSecretariat}}</span>
+            </td>
+            <td>
+              <button class="btn pull-right" (click)="detalleVehiculo(vehiculo.licensePlate)" *ngIf="vehiculo.taxes != null">
+                <i class="material-icons filter-icon">description</i>{{vehiculo.taxes.length}}
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="vehiculos.length == 0">
+            <td colspan="4">
+              <span><b>No se han encontrado resultados</b></span>
             </td>
           </tr>
         </tbody>

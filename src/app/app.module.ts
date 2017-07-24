@@ -36,6 +36,7 @@ import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 import { Ng2FileInputModule } from 'ng2-file-input';
 import { NvD3Component } from 'ng2-nvd3';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DetalleNotificacionesComponent } from './detalle-notificaciones/detalle-notificaciones.component';
 
 const appRoutes: Routes = [
   {
@@ -75,6 +76,10 @@ const appRoutes: Routes = [
     component: DashboardComponent
   },
   {
+    path: 'detalle-notificacion/:id',
+    component: DetalleNotificacionesComponent
+  },
+  {
     path: '',
     redirectTo: '/login',
     pathMatch: 'full'
@@ -104,7 +109,8 @@ export function highchartsFactory() {
     DetalleComparendoComponent,
     AgregarVehiculoComponent,
         DashboardComponent,
-    NvD3Component
+    NvD3Component,
+    DetalleNotificacionesComponent
   ],
   imports: [
      ChartModule,
