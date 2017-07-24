@@ -29,5 +29,13 @@ export class VehiculosService {
       .map((res: Response) => res.json() as Vehiculo)
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
+   agregarVehiculo(parametros: Vehiculo[]) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let body = JSON.stringify(parametros);
+    return this.http.post(this.urlBase + "/vehicles" , body , options)
+      .map((res: Response) => res.json() as any)
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
 
 }
