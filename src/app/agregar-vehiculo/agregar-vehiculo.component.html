@@ -2,32 +2,33 @@
 <br>
 <div class="container-fluid">
 
-  <form class="well form-horizontal" action=" " method="post" id="contact_form">
+  <form class=" form-horizontal" action=" " method="post" id="contact_form">
     <fieldset>
 
       <!-- Form Name -->
-      <legend>Contact Us Today!</legend>
+      <legend>Ingresar un nuevo Vehículo</legend>
 
 
       <div class="form-group">
         <label class="col-md-4 control-label">Placa</label>
         <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
+            <input type="text" class="form-control" placeholder="Placa" name="placa" [(ngModel)]="placa">
             <span class="input-group-addon"><i class="material-icons">directions_car</i></span>
-            <input name="phone" placeholder="Placa" class="form-control" type="text">
+
           </div>
         </div>
       </div>
-
       <div class="form-group">
         <label class="col-md-4 control-label">Lugar de Expedición</label>
         <div class="col-md-4 selectContainer">
           <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-            <select name="state" class="form-control selectpicker">
-      <option value=" " >Lugar de Expedición</option>
-      <option>Bogotá</option>     
-    </select>
+            <select [(ngModel)]="lugar_expedicion" name="lugar_expedicion" class="form-control selectpicker">
+                <option value="" selected="true" >Lugar de Expedición</option>
+                <option value="Bogotá D.C">Bogotá D.C</option>   
+                <option value="Medellín">Medellín</option>       
+            </select>
+            <span class="input-group-addon"><i class="material-icons">place</i></span>
           </div>
         </div>
       </div>
@@ -37,8 +38,9 @@
         <label class="col-md-4 control-label">Nombres</label>
         <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-            <input name="first_name" placeholder="Nombres" class="form-control" type="text">
+
+            <input [(ngModel)]="nombres" name="nombres" placeholder="Nombres" class="form-control" type="text">
+            <span class="input-group-addon"><i class="material-icons">person_pin</i></span>
           </div>
         </div>
       </div>
@@ -49,8 +51,9 @@
         <label class="col-md-4 control-label">Apellidos</label>
         <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-            <input name="last_name" placeholder="Apellidos" class="form-control" type="text">
+            <input [(ngModel)]="apellidos" name="apellidos" placeholder="Apellidos" class="form-control" type="text">
+            <span class="input-group-addon"><i class="material-icons">person_pin</i></span>
+
           </div>
         </div>
       </div>
@@ -60,8 +63,9 @@
         <label class="col-md-4 control-label">E-Mail</label>
         <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-            <input name="email" placeholder="E-Mail" class="form-control" type="text">
+            <input [(ngModel)]="email" name="email" placeholder="E-Mail" class="form-control" type="text">
+            <span class="input-group-addon"><i class="material-icons">email</i></span>
+
           </div>
         </div>
       </div>
@@ -73,26 +77,26 @@
         <label class="col-md-4 control-label">Teléfono</label>
         <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-            <input name="phone" placeholder="(845)555-1212" class="form-control" type="text">
+
+            <input [(ngModel)]="telefono" name="telefono" placeholder="Teléfono" class="form-control" type="text">
+            <span class="input-group-addon"><i class="material-icons">phone</i></span>
           </div>
         </div>
       </div>
 
       <!-- Select Basic -->
-
       <div class="form-group">
-        <label class="col-md-4 control-label">State</label>
+        <label class="col-md-4 control-label">Tipo de Identificación</label>
         <div class="col-md-4 selectContainer">
           <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-            <select name="state" class="form-control selectpicker">
-      <option value=" " >Tipo de Identificación</option>
-      <option>Cedula de Ciudadanía</option>
-      <option>Cédula de Extranjería</option>
-      <option >Carné Diplomatico</option>
-     
-    </select>
+
+            <select [(ngModel)]="tipo_identificacion" name="tipo_identificacion" class="form-control selectpicker">
+              <option value="" selected="true">Tipo de Identificación</option>
+              <option value="Cedula de Ciudadanía">Cedula de Ciudadanía</option>
+              <option value="Cédula de Extranjería">Cédula de Extranjería</option>
+              <option value="Carné Diplomatico">Carné Diplomatico</option>
+            </select>
+            <span class="input-group-addon"><i class="material-icons">list</i></span>
           </div>
         </div>
       </div>
@@ -102,8 +106,9 @@
         <label class="col-md-4 control-label">Identificación</label>
         <div class="col-md-4 inputGroupContainer">
           <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon  "></i></span>
-            <input name="phone" placeholder="Identificación" class="form-control" type="text">
+            <input name="identificacion" [(ngModel)]="identificacion" placeholder="Identificación" class="form-control" type="text">
+            <span class="input-group-addon"><i class="material-icons">perm_identity</i></span>
+
           </div>
         </div>
       </div>
@@ -112,7 +117,7 @@
       <div class="form-group">
         <label class="col-md-4 control-label"></label>
         <div class="col-md-4">
-          <button type="submit" class="btn btn-warning">Agregar Vehiculo <span class="glyphicon glyphicon-send"></span></button>
+          <button (click)="agregarVehiculos()" class="btn btn-primary">Agregar Vehiculo <span></span></button>
         </div>
       </div>
 

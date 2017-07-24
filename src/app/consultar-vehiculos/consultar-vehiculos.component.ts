@@ -100,8 +100,8 @@ export class ConsultarVehiculosComponent implements OnInit {
       if (vehiculo.licensePlate.indexOf(this.filtro.toUpperCase()) >= 0) {
         this.vehiculos.push(vehiculo);
       }
-      else{
-        if(vehiculo.financeSecretariat.indexOf(this.filtro.toUpperCase()) >= 0){
+      else {
+        if (vehiculo.financeSecretariat.indexOf(this.filtro.toUpperCase()) >= 0) {
           this.vehiculos.push(vehiculo);
         }
       }

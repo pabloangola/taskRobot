@@ -9,8 +9,8 @@ export class VehiculosService {
 
   constructor(private http: Http) { }
 
-  urlBase = "http://35.197.37.143:8082"
-
+  //urlBase = "http://35.197.37.143:8082"
+  urlBase = "http://192.168.1.70:8082"
   listarVehiculos(params): Observable<Vehiculo[]> {
 
     let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -27,6 +27,14 @@ export class VehiculosService {
 
     return this.http.get(this.urlBase + "/vehicles/" + placa, options)
       .map((res: Response) => res.json() as Vehiculo)
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+   agregarVehiculo(parametros: Vehiculo[]) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let body = JSON.stringify(parametros);
+    return this.http.post(this.urlBase + "/vehicles" , body , options)
+      .map((res: Response) => res.json() as any)
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
