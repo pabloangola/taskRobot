@@ -9,7 +9,7 @@
     </ngb-alert>
     <div class="row" *ngIf="vehiculo != null">
       <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
-        <fieldset class="border padding">
+        <fieldset class="padding white-background">
           <b>Nombre:</b> {{vehiculo.customer.firstName}} {{vehiculo.customer.surname}}
           <br><b>Correo:</b> {{vehiculo.customer.email}}
           <br><b> Telefono:</b> {{vehiculo.customer.cellPhone}}
@@ -38,9 +38,9 @@
                     <p><b>Codigo:</b> {{comparendo.numero}}</p>
                     <p><b>Valor:</b> $ {{comparendo.total | number:'.2-2'}}</p>
                     <p><b>Estado:</b> {{comparendo.estado}}</p>
-                    <p><b>Fecha de radicacion:</b> {{comparendo.fecha | date:'dd/MM/yyyy'}}</p>
                   </div>
                   <div class="col-sm-4 col-xs-12 col-md-4 col-lg-4">
+                    <p><b>Fecha de radicacion:</b> {{comparendo.fecha | date:'dd/MM/yyyy'}}</p>
                     <p><b>Descripcion:</b> Presentar licencia de conducción adulterada o ajena, lo cual dará lugar a la inmovilización del vehículo.</p>
                   </div>
                   <div class="col-sm-3 col-xs-12 col-md-3 col-lg-3">
@@ -69,11 +69,10 @@
                     <!--{{comparendo.codigo}} -->
                     <p><b>Codigo:</b> {{impuesto.nroReferencia}} </p>
                     <p><b>Valor:</b> $ 214,000</p>
-                    <p><b>Estado:</b> Pendiente </p>
-                    <p><b>Fecha:</b> {{impuesto.fechaPresentacion}} </p>
                   </div>
                   <div class="col-sm-4 col-xs-12 col-md-4 col-lg-4">
-                    
+                    <p><b>Estado:</b> Pendiente </p>
+                    <p><b>Fecha:</b> {{impuesto.fechaPresentacion}} </p>
                   </div>
                   <div class="col-sm-3 col-xs-12 col-md-3 col-lg-3">
                     <button class="btn btn-primary pull-right col-xs-12 col-md-3 col-sm-3 col-lg-3">

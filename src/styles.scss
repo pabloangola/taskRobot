@@ -164,3 +164,11 @@ html, body {
   cursor: pointer;
   background: rgba(169, 68, 66, 0.85);
 }
+.bg-primary {
+    background-color: rgb(31, 178, 229) !important;
+}
+.btn-primary {
+    color: #fff;
+    background-color: rgb(31, 178, 229) !important;
+    border-color: white !important;
+}
