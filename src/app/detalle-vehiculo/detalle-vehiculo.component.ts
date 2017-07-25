@@ -5,6 +5,8 @@ import { Comparendo } from '../dto/comparendo';
 import { ComparendoRequest } from '../dto/comparendoRequest';
 import { Vehiculo } from '../dto/vehiculoResponse';
 import { VehiculosService } from '../services/vehiculos.service';
+import { DetallesImpuesto } from '../dto/impuesto';
+import { ImpuestoService } from '../services/impuesto.service';
 
 @Component({
   selector: 'app-detalle-vehiculo',
@@ -15,6 +17,7 @@ export class DetalleVehiculoComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private comparendoService: ComparendoService,
+    private ImpuestoService: ImpuestoService,
     private vehiculosService: VehiculosService,
     private router: Router) { }
 
@@ -23,6 +26,7 @@ export class DetalleVehiculoComponent implements OnInit {
   vehiculo: Vehiculo;
   totalAdeudado: number = 0;
   errorVehiculo: boolean = false;
+  impuestos: DetallesImpuesto[] = [];
 
   ngOnInit() {
     var sub = this.route.params.subscribe(params => {
@@ -47,7 +51,13 @@ export class DetalleVehiculoComponent implements OnInit {
         });
       });
 
-      this
+      this.ImpuestoService.getImpuestos(this.placa).subscribe(res => {
+        res.detalles.forEach(impuesto => {
+          if(impuesto.indPago=="SIN PAGO"){
+            this.impuestos.push(impuesto);
+          }
+        });
+      });
     });
   }
   detalleNotificaciones(comparendo) {

@@ -32,6 +32,7 @@ export class ConsultarVehiculosComponent implements OnInit {
   comparendosVisibles: Comparendo[] = [];
   totalPonderado: number = 0;
   totalComparendos: number = 0;
+  totalImpuestos:number = 0;
   pagina: number = 1;
   filtro: string;
   vehiculosTotales: Vehiculo[] = [];
@@ -44,7 +45,7 @@ export class ConsultarVehiculosComponent implements OnInit {
 
   ngOnInit() {
     let body = {};
-
+    this.vehiculos = [];
     this.vehiculosService.listarVehiculos(body)
       .subscribe(res => {
         this.vehiculos = res;
@@ -185,6 +186,7 @@ export class ConsultarVehiculosComponent implements OnInit {
                   vehiculo.taxes = [];
                 }
                 vehiculo.taxes.push(impuesto);
+                this.totalImpuestos++;
               }
             });
           }
@@ -194,5 +196,9 @@ export class ConsultarVehiculosComponent implements OnInit {
     });
     this.taxFlag = true;
     this.purgarVehiculos();
+  }
+
+  agregarVehiculo(){
+    this.router.navigate(['/agregar-vehiculo']);
   }
 }
