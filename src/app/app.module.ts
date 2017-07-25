@@ -37,6 +37,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DetalleNotificacionesComponent } from './detalle-notificaciones/detalle-notificaciones.component';
 import { DetalleInfraccionesService } from './services/detalle-infracciones.service';
 import { ImpuestoService } from './services/impuesto.service';
+import { AdministracionComponent } from './administracion/administracion.component';
 
 const appRoutes: Routes = [
   {
@@ -66,6 +67,10 @@ const appRoutes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent
+  },
+  {
+    path: 'administracion',
+    component: AdministracionComponent
   },
   {
     path: 'detalle-notificacion/:id',
@@ -100,7 +105,8 @@ export function highchartsFactory() {
     AgregarVehiculoComponent,
     DashboardComponent,
     NvD3Component,
-    DetalleNotificacionesComponent
+    DetalleNotificacionesComponent,
+    AdministracionComponent
   ],
   imports: [
     ChartModule,
