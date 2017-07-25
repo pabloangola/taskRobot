@@ -140,7 +140,7 @@ export class ConsultarVehiculosComponent implements OnInit {
         });
       }
     });
-
+   
     this.emailService.sendEmails(emailRequest).subscribe();
     this.smsService.sendSms(smsRequest).subscribe();
     this._success.next(`Notificacion Enviada correctamente.`);

@@ -13,8 +13,9 @@ export class TelefonoService {
   urlBase = "http://192.168.1.107:8080"
 
   sendSms(params) {
-
+    //let token = localStorage.getItem('customToken');
     let body = JSON.stringify(params);
+     //  let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': token });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 

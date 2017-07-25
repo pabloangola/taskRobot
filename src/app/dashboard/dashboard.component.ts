@@ -61,11 +61,11 @@ export class DashboardComponent implements OnInit {
                 type: 'area'
             },
             title: {
-                text: 'US and USSR nuclear stockpiles'
+                text: 'Número de multas vs Número de comparendos vencidos en los ultimos 20 años'
             },
             subtitle: {
                 text:
-                'thebulletin.metapress.com</a>'
+                ''
             },
             xAxis: {
                 allowDecimals: false,
@@ -104,7 +104,7 @@ export class DashboardComponent implements OnInit {
                 }
             },
             series: [{
-                name: 'USA',
+                name: 'Multas',
                 data: [null, null, null, null, null, 6, 11, 32, 110, 235, 369, 640,
                     1005, 1436, 2063, 3057, 4618, 6444, 9822, 15468, 20434, 24126,
                     27387, 29459, 31056, 31982, 32040, 31233, 29224, 27342, 26662,
@@ -113,7 +113,7 @@ export class DashboardComponent implements OnInit {
                     22380, 21004, 17287, 14747, 13076, 12555, 12144, 11009, 10950,
                     10871, 10824, 10577, 10527, 10475, 10421, 10358, 10295, 10104]
             }, {
-                name: 'USSR/Russia',
+                name: 'Impuestos',
                 data: [null, null, null, null, null, null, null, null, null, null,
                     5, 25, 50, 120, 150, 200, 426, 660, 869, 1060, 1605, 2471, 3322,
                     4238, 5221, 6129, 7089, 8339, 9399, 10538, 11643, 13092, 14478,
@@ -132,10 +132,10 @@ export class DashboardComponent implements OnInit {
 
             },
             title: {
-                text: 'Contents of Highsofts weekly fruit delivery'
+                text: 'Principales Secretarías de Hacienda con mas impuestos proximos a vencerse'
             },
             subtitle: {
-                text: '3D donut in Highcharts'
+                text: ' '
             },
             plotOptions: {
                 pie: {
@@ -151,12 +151,11 @@ export class DashboardComponent implements OnInit {
             series: [{
                 name: 'Brands',
                 data: [
-                    { name: 'Microsoft Internet Explorer', y: 56.33 },
-                    { name: 'Chrome', y: 24.03 },
-                    { name: 'Firefox', y: 10.38 },
-                    { name: 'Safari', y: 4.77 },
-                    { name: 'Opera', y: 0.91 },
-                    { name: 'Proprietary or Undetectable', y: 0.2 }
+                    { name: 'Secretaría de Bogotá', y: 56.33 },
+                    { name: 'Secretaría de Antioquia ', y: 24.03 },
+                    { name: 'Secretaría de Putumayo', y: 10.38 },
+                    { name: 'Secretaría del Huila', y: 4.77 }
+              
                 ]
             }]
         };
@@ -330,12 +329,20 @@ export class DashboardComponent implements OnInit {
             }]
         };
         this.options2 = {
-            title: { text: 'mouseOver series events example' },
+            title: { text: 'Comparación multas pendientes en el año 2016 y 2017' },
             chart: { zoomType: 'x' },
             series: [
-                { name: 'serie 1', data: [29.9, 71.5, 106.4, 129.2, 45, 13, 120], },
-                { name: 'serie 2', data: [-29.9, 4, -106.4, 0, 10, -100, 120] }
-            ]
+                { name: 'Año 2016', data: [29.9, 71.5, 106.4, 129.2, 45, 13, 120], },
+                { name: 'Año 2017', data: [20, 45, 100, 100, 80, 20, 129] }
+            ],
+            xAxis: {
+                categories: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+            },
+             yAxis: {
+                title: {
+                    text: 'Número de Multas'
+                }
+            }
         };
 
 
