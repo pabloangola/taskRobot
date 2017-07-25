@@ -1,0 +1,22 @@
+[
+    {
+        "codigo": "A1",
+        "descripcion": "No transitar por la derecha de la vía."
+    },
+    {
+        "codigo": "C2",
+        "descripcion": "Estacionar un vehículo en los siguientes sitios prohibidos"
+    },
+    {
+        "codigo": "C1",
+        "descripcion": "Presentar licencia de conducción adulterada o ajena, lo cual dará lugar a la inmovilización del vehículo."
+    },
+    {
+        "codigo": "C9",
+        "descripcion": "No respetar las señales de detención en el cruce de una línea férrea a una distancia mínima de cinco (5) metros de la vía férrea o conducir por la vía férrea o por las zonas de protección y seguridad de ella."
+    },
+    {
+        "codigo": "D5",
+        "descripcion": "Conducir un vehículo sobre aceras, plazas, vías peatonales, separadores, bermas, demarcaciones de canalización, zonas verdes o vías especiales para vehículos no motorizados. En el caso de motocicletas se procederá a su inmovilización hasta tanto no se pague el valor de la multa o la autoridad competente decida sobre su imposición en los términos de los artículos 135 y 136 del Código Nacional de Tránsito."
+    }
+]

@@ -33,16 +33,18 @@
             <tr *ngFor="let comparendo of comparendos">
               <td>
                 <div class="row">
-                  <div class="col-sm-6 col-xs-12 col-md-6 col-lg-6">
+                  <div class="col-sm-5 col-xs-12 col-md-5 col-lg-5">
                     <!--{{comparendo.codigo}} -->
-                    <p class="text-danger">Infraccion: XXXXXXXXXXXXXX</p>
-                    <b class="text-danger">Valor: $ {{comparendo.total | number:'.2-2'}}</b>
-                    <p class="text-danger">Estado: {{comparendo.estado}}</p>
-                    <p class="text-danger">Fecha de radicacion: {{comparendo.fecha}}</p>
+                    <p class="text-danger"><b>Codigo:</b> {{comparendo.numero}}</p>
+                    <p class="text-danger"><b>Valor:</b> $ {{comparendo.total | number:'.2-2'}}</p>
+                    <p class="text-danger"><b>Estado:</b> {{comparendo.estado}}</p>
+                    <p class="text-danger"><b>Fecha de radicacion:</b> {{comparendo.fecha | date:'yyyy/MM/dd'}}</p>
                   </div>
-                  <div class="col-sm-6 col-xs-12 col-md-6 col-lg-6">
-                    <b class="text-danger">Valor: $ {{comparendo.total | number:'.2-2'}}</b>
-                    <button class="btn pull-right" (click)="detalleNotificaciones(comparendo.numero)">
+                  <div class="col-sm-4 col-xs-12 col-md-4 col-lg-4">
+                    <p class="text-danger"><b>Descripcion:</b> Presentar licencia de conducción adulterada o ajena, lo cual dará lugar a la inmovilización del vehículo.</p>
+                  </div>
+                  <div class="col-sm-3 col-xs-12 col-md-3 col-lg-3">
+                    <button class="btn btn-primary pull-right col-xs-12 col-md-3 col-sm-3 col-lg-3" (click)="detalleNotificaciones(comparendo.numero)">
                       <i class="material-icons filter-icon">search</i>
                     </button>
                   </div>

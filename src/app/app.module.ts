@@ -1,4 +1,3 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -8,7 +7,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
-import { EstadoCuentaComponent } from './estado-cuenta/estado-cuenta.component';
 import { ConsultarVehiculosComponent } from './consultar-vehiculos/consultar-vehiculos.component';
 import { InformacionBatchComponent } from './informacion-batch/informacion-batch.component';
 import { AuthService } from './providers/auth.service';
@@ -37,6 +35,8 @@ import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 import { NvD3Component } from 'ng2-nvd3';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DetalleNotificacionesComponent } from './detalle-notificaciones/detalle-notificaciones.component';
+import { DetalleInfraccionesService } from './services/detalle-infracciones.service';
+import { ImpuestoService } from './services/impuesto.service';
 
 const appRoutes: Routes = [
   {
@@ -46,10 +46,6 @@ const appRoutes: Routes = [
   {
     path: 'informacion-batch',
     component: InformacionBatchComponent
-  },
-  {
-    path: 'estado-cuenta',
-    component: EstadoCuentaComponent
   },
   {
     path: 'consultar-vehiculos',
@@ -96,19 +92,18 @@ export function highchartsFactory() {
   declarations: [
     AppComponent,
     LoginComponent,
-    EstadoCuentaComponent,
     ConsultarVehiculosComponent,
     InformacionBatchComponent,
     HomeComponent,
     DetalleVehiculoComponent,
     DetalleComparendoComponent,
     AgregarVehiculoComponent,
-        DashboardComponent,
+    DashboardComponent,
     NvD3Component,
     DetalleNotificacionesComponent
   ],
   imports: [
-     ChartModule,
+    ChartModule,
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
@@ -120,14 +115,13 @@ export function highchartsFactory() {
     NgbModule.forRoot(),
     NgxPaginationModule,
     NgPipesModule,
-    InfiniteScrollModule
-  ],
+    InfiniteScrollModule],
   providers: [AuthService, ComparendoService, EmailService, TelefonoService, JwtService, VehiculosService,
     {
       provide: HighchartsStatic,
       useFactory: highchartsFactory
     }
-  ],
+    , DetalleInfraccionesService, ImpuestoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,9 +1,12 @@
 import { Comparendo } from './comparendo';
+import { DetallesImpuesto } from './impuesto';
 export class Vehiculo {
     licensePlate: string;
-    financeSecretariat:string;
+    financeSecretariat: string;
     customer: Customer;
-    taxes:Comparendo[];
+    fines: Comparendo[];
+    taxes: DetallesImpuesto[];
+    duesLength:number;
 }
 
 export class Customer {

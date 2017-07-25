@@ -11,6 +11,8 @@ import { EmailService } from '../services/email.service';
 import { SmsRequest } from '../dto/smsRequest';
 import { Subject } from 'rxjs/Subject';
 import { debounceTime } from 'rxjs/operator/debounceTime';
+import { Impuesto, DetallesImpuesto } from '../dto/impuesto';
+import { ImpuestoService } from '../services/impuesto.service';
 
 @Component({
   selector: 'app-consultar-vehiculos',
@@ -23,7 +25,8 @@ export class ConsultarVehiculosComponent implements OnInit {
     private comparendoService: ComparendoService,
     private router: Router,
     private emailService: EmailService,
-    private smsService: TelefonoService) { }
+    private smsService: TelefonoService,
+    private impuestoService: ImpuestoService) { }
 
   vehiculos: Vehiculo[] = [];
   comparendosVisibles: Comparendo[] = [];
@@ -36,6 +39,8 @@ export class ConsultarVehiculosComponent implements OnInit {
   successMessage: string;
   staticAlertClosed = false;
   filterValues = [];
+  taxFlag: boolean = false;
+  fineFlag: boolean = false;
 
   ngOnInit() {
     let body = {};
@@ -43,7 +48,8 @@ export class ConsultarVehiculosComponent implements OnInit {
     this.vehiculosService.listarVehiculos(body)
       .subscribe(res => {
         this.vehiculos = res;
-        this.searchComparendo();
+        this.consultarComparendo();
+        this.consultarImpuestos();
       });
     setTimeout(() => this.staticAlertClosed = true, 20000);
 
@@ -53,45 +59,44 @@ export class ConsultarVehiculosComponent implements OnInit {
   detalleVehiculo(placa) {
     this.router.navigate(['/detalle-vehiculo', placa]);
   }
-  searchComparendo() {
+  consultarComparendo() {
     var comparendoRequest: ComparendoRequest = new ComparendoRequest();
     comparendoRequest.numero = "8909039388";
     comparendoRequest.tipo = 4;
     comparendoRequest.placas = [];
 
-    this.comparendoService.getComparendo(comparendoRequest).subscribe(res => {
-      res.forEach(comparendo => {
-        var existePropietario: boolean = false;
-        this.vehiculos.forEach(vehiculo => {
-          if (comparendo.placaVehiculo == vehiculo.licensePlate) {
-            existePropietario = true;
-            if (vehiculo.taxes == null) {
-              vehiculo.taxes = [];
+    this.comparendoService.getComparendo(comparendoRequest).subscribe(
+      res => {
+        res.forEach(comparendo => {
+          var existePropietario: boolean = false;
+          this.vehiculos.forEach(vehiculo => {
+            if (comparendo.placaVehiculo == vehiculo.licensePlate) {
+              existePropietario = true;
+              if (vehiculo.fines == null) {
+                vehiculo.fines = [];
+              }
+              vehiculo.fines.push(comparendo);
+              this.filterValues.push(comparendo.placaVehiculo);
             }
-            vehiculo.taxes.push(comparendo);
+          });
+          if (!existePropietario) {
+            var vehiculoNoVinculado: Vehiculo = new Vehiculo();
+            vehiculoNoVinculado.licensePlate = comparendo.placaVehiculo;
+            vehiculoNoVinculado.fines = [];
+            vehiculoNoVinculado.fines.push(comparendo);
+            this.vehiculos.push(vehiculoNoVinculado);
             this.filterValues.push(comparendo.placaVehiculo);
           }
+          this.totalComparendos++;
+          this.totalPonderado += comparendo.total;
         });
-        if (!existePropietario) {
-          var vehiculoNoVinculado: Vehiculo = new Vehiculo();
-          vehiculoNoVinculado.licensePlate = comparendo.placaVehiculo;
-          vehiculoNoVinculado.taxes = [];
-          vehiculoNoVinculado.taxes.push(comparendo);
-          this.vehiculos.push(vehiculoNoVinculado);
-          this.filterValues.push(comparendo.placaVehiculo);
-        }
-        this.totalComparendos++;
-        this.totalPonderado += comparendo.total;
+        this.fineFlag = true;
+        this.purgarVehiculos();
+      },
+      error => {
+        this.fineFlag = true;
+        this.purgarVehiculos();
       });
-      var index: number = 0;
-      this.vehiculos.forEach(vehiculo => {
-        if (vehiculo.taxes == null) {
-          this.vehiculos.splice(index, 1);
-        }
-        index++;
-      });
-      this.vehiculosTotales.push.apply(this.vehiculosTotales, this.vehiculos);
-    });
   }
 
   filtrarTabla() {
@@ -101,11 +106,34 @@ export class ConsultarVehiculosComponent implements OnInit {
         this.vehiculos.push(vehiculo);
       }
       else {
-        if (vehiculo.financeSecretariat.indexOf(this.filtro.toUpperCase()) >= 0) {
+        if (vehiculo.financeSecretariat != null && vehiculo.financeSecretariat.indexOf(this.filtro.toUpperCase()) >= 0) {
           this.vehiculos.push(vehiculo);
         }
       }
     });
+  }
+
+  purgarVehiculos() {
+    if (this.taxFlag && this.fineFlag) {
+      var index: number = 0;
+      let vehiculosTemp = [];
+      vehiculosTemp.push.apply(vehiculosTemp, this.vehiculos);
+      this.vehiculos = [];
+
+      vehiculosTemp.forEach(vehiculo => {
+        vehiculo.duesLength = 0;
+        if (vehiculo.fines != null || vehiculo.taxes != null) {
+          if (vehiculo.fines != null) {
+            vehiculo.duesLength += vehiculo.fines.length;
+          }
+          if (vehiculo.taxes != null) {
+            vehiculo.duesLength += vehiculo.taxes.length;
+          }
+          this.vehiculos.push(vehiculo);
+        }
+      });
+      this.vehiculosTotales.push.apply(this.vehiculosTotales, this.vehiculos);
+    }
   }
 
   notificarComparendos() {
@@ -115,7 +143,7 @@ export class ConsultarVehiculosComponent implements OnInit {
 
     this.vehiculos.forEach(vehiculo => {
       if (vehiculo.customer != null) {
-        vehiculo.taxes.forEach(comparendo => {
+        vehiculo.fines.forEach(comparendo => {
           if (!false) {
             var emailRequestObject: EmailRequest = new EmailRequest();
             emailRequestObject.to = vehiculo.customer.email;
@@ -144,5 +172,27 @@ export class ConsultarVehiculosComponent implements OnInit {
     this.emailService.sendEmails(emailRequest).subscribe();
     this.smsService.sendSms(smsRequest).subscribe();
     this._success.next(`Notificacion Enviada correctamente.`);
+  }
+
+  consultarImpuestos() {
+    this.vehiculos.forEach(vehiculo => {
+      this.impuestoService.getImpuestos(vehiculo.licensePlate).subscribe(
+        res => {
+          if (res.detalles != null) {
+            res.detalles.forEach(impuesto => {
+              if (impuesto.indPago == "SIN PAGO") {
+                if (vehiculo.taxes == null) {
+                  vehiculo.taxes = [];
+                }
+                vehiculo.taxes.push(impuesto);
+              }
+            });
+          }
+          this.taxFlag = true;
+          this.purgarVehiculos();
+        });
+    });
+    this.taxFlag = true;
+    this.purgarVehiculos();
   }
 }
