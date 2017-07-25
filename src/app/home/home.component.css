@@ -60,3 +60,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#48ccea', end
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
     background-color: rgba(31,183,229,1)
 }
+
+.material-icons{
+    align-content: center;
+    font-size: 25px;
+}
+
+ 

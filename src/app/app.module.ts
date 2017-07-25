@@ -30,7 +30,8 @@ import 'nvd3';
 
 import { ChartModule } from 'angular2-highcharts';
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
-import { Ng2FileInputModule } from 'ng2-file-input';
+//import { Ng2FileInputModule } from 'ng2-file-input';
+//Ng2FileInputModule.forRoot(),
 import { NvD3Component } from 'ng2-nvd3';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DetalleNotificacionesComponent } from './detalle-notificaciones/detalle-notificaciones.component';
@@ -114,9 +115,7 @@ export function highchartsFactory() {
     NgbModule.forRoot(),
     NgxPaginationModule,
     NgPipesModule,
-    InfiniteScrollModule,
-    Ng2FileInputModule.forRoot(),
-  ],
+    InfiniteScrollModule],
   providers: [AuthService, ComparendoService, EmailService, TelefonoService, JwtService, VehiculosService,
     {
       provide: HighchartsStatic,

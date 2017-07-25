@@ -1,7 +1,7 @@
 <app-home></app-home>
 <br>
 <div class="container-fluid">
-
+ <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
   <form class=" form-horizontal" action=" " method="post" id="contact_form">
     <fieldset>
 
@@ -11,7 +11,7 @@
 
       <div class="form-group">
         <label class="col-md-4 control-label">Placa</label>
-        <div class="col-md-4 inputGroupContainer">
+        <div class="col-md-6 inputGroupContainer">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Placa" name="placa" [(ngModel)]="placa">
             <span class="input-group-addon"><i class="material-icons">directions_car</i></span>
@@ -21,7 +21,7 @@
       </div>
       <div class="form-group">
         <label class="col-md-4 control-label">Lugar de Expedición</label>
-        <div class="col-md-4 selectContainer">
+        <div class="col-md-6 selectContainer">
           <div class="input-group">
             <select [(ngModel)]="lugar_expedicion" name="lugar_expedicion" class="form-control selectpicker">
                 <option value="" selected="true" >Lugar de Expedición</option>
@@ -36,7 +36,7 @@
 
       <div class="form-group">
         <label class="col-md-4 control-label">Nombres</label>
-        <div class="col-md-4 inputGroupContainer">
+        <div class="col-md-6 inputGroupContainer">
           <div class="input-group">
 
             <input [(ngModel)]="nombres" name="nombres" placeholder="Nombres" class="form-control" type="text">
@@ -49,7 +49,7 @@
 
       <div class="form-group">
         <label class="col-md-4 control-label">Apellidos</label>
-        <div class="col-md-4 inputGroupContainer">
+        <div class="col-md-6 inputGroupContainer">
           <div class="input-group">
             <input [(ngModel)]="apellidos" name="apellidos" placeholder="Apellidos" class="form-control" type="text">
             <span class="input-group-addon"><i class="material-icons">person_pin</i></span>
@@ -61,7 +61,7 @@
       <!-- Text input-->
       <div class="form-group">
         <label class="col-md-4 control-label">E-Mail</label>
-        <div class="col-md-4 inputGroupContainer">
+        <div class="col-md-6 inputGroupContainer">
           <div class="input-group">
             <input [(ngModel)]="email" name="email" placeholder="E-Mail" class="form-control" type="text">
             <span class="input-group-addon"><i class="material-icons">email</i></span>
@@ -75,7 +75,7 @@
 
       <div class="form-group">
         <label class="col-md-4 control-label">Teléfono</label>
-        <div class="col-md-4 inputGroupContainer">
+        <div class="col-md-6 inputGroupContainer">
           <div class="input-group">
 
             <input [(ngModel)]="telefono" name="telefono" placeholder="Teléfono" class="form-control" type="text">
@@ -87,7 +87,7 @@
       <!-- Select Basic -->
       <div class="form-group">
         <label class="col-md-4 control-label">Tipo de Identificación</label>
-        <div class="col-md-4 selectContainer">
+        <div class="col-md-6 selectContainer">
           <div class="input-group">
 
             <select [(ngModel)]="tipo_identificacion" name="tipo_identificacion" class="form-control selectpicker">
@@ -96,7 +96,7 @@
               <option value="Cédula de Extranjería">Cédula de Extranjería</option>
               <option value="Carné Diplomatico">Carné Diplomatico</option>
             </select>
-            <span class="input-group-addon"><i class="material-icons">list</i></span>
+            <span class="input-group-addon"><i class="material-icons">list</i> </span>
           </div>
         </div>
       </div>
@@ -104,7 +104,7 @@
 
       <div class="form-group">
         <label class="col-md-4 control-label">Identificación</label>
-        <div class="col-md-4 inputGroupContainer">
+        <div class="col-md-6 inputGroupContainer">
           <div class="input-group">
             <input name="identificacion" [(ngModel)]="identificacion" placeholder="Identificación" class="form-control" type="text">
             <span class="input-group-addon"><i class="material-icons">perm_identity</i></span>

@@ -22,34 +22,37 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private jwtService: JwtService) {
-  }
+    private jwtService: JwtService) {}
 
-  forgetPassword() {
-    firebase.auth().sendPasswordResetEmail(this.forgetEmail).then(function () {
-
-    }, function (error) {
-      var errorMessage = error.message;
-
-    });
-  }
   ngOnInit() { }
 
-  LoginWithEmail() {
-    var router = this.router;
+  forgetPassword(): void{
+    firebase.auth().sendPasswordResetEmail(this.forgetEmail).then(error => error.message)
+  }
+
+  loginWithEmail(): void {
     let jwtService: JwtService = this.jwtService;
-    firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(function (user) {
-      var token;
-      user = firebase.auth().currentUser.getToken(false).then(function (idToken) {
-        token = idToken;
-        let jwtRequestObject = new JwtRequest();
-        jwtRequestObject.token = token;
-        jwtService.sendToken(jwtRequestObject).subscribe();
-        localStorage.setItem('currentUser', user.uid);
-        router.navigate(['/dashboard']);
-      });
-    }).catch(function (error) {
-      var errorMessage = error.message;
-    });
+    let signCustomToken = this.signCustomToken;
+    let router = this.router;
+    firebase.auth().signInWithEmailAndPassword(this.email, this.password).then
+      (user => {
+        localStorage.setItem('currentUser', user);
+        user = firebase.auth().currentUser.getToken(false).then(function (idToken) {
+          jwtService.sendToken(idToken).subscribe(customToken => localStorage.setItem('customToken', customToken));
+         // signCustomToken();
+          router.navigate(['/dashboard']);
+        });
+      }).catch(error => error.message);
+      
+  }
+
+  signCustomToken(): void {
+    let customtoken = localStorage.getItem("customToken");
+    let user: String;
+    firebase.auth().signInWithCustomToken(customtoken)
+    .then(()=>firebase.auth().currentUser.getToken(false)
+          .then(idToken => localStorage.setItem('customToken', idToken))
+          .catch(e => e.message))
+    .catch(error => error.message);
   }
 }

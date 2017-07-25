@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-inverse" role="navigation">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
+
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
@@ -8,53 +8,52 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <img id="ctl00_XXX" src="/assets/image/logo.png" style="margin-top:10px;    width: 80px" />
-
       <a class="navbar-brand"> 
      </a>
     </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
+
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
       <ul class="nav navbar-nav ">
-        <li><a routerLink="/dashboard"><b>Estadisticas</b></a></li>
-        <li><a routerLink="/consultar-vehiculos"><b>Vehiculos</b></a></li>
-        <li><a routerLink="/informacion-batch"><b>Carga de archivos</b></a></li>
+        <li class="text-center">
+          <a routerLink="/dashboard">
+            <i class="material-icons">dashboard</i>
+               <p>Panel de Control</p>
+            </a>
+        </li>
+        <li class="text-center">
+          <a routerLink="/consultar-vehiculos">
+             <i class="material-icons">search</i>
+               <p>Vehiculos</p>
+            </a>
+        </li>
+        <li class="text-center">
+          <a routerLink="/informacion-batch">
+             <i class="material-icons">file_upload</i>
+               <p>Carga de Archivos</p>
+            </a>
+        </li>
+
       </ul>
       <ul class="nav navbar-nav  navbar-right">
-        <li><a routerLink="/login">Cerrar Sesión</a></li>
+
+        <li class="dropdown text-center">
+
+          <a href="#" class="dropdown-toggle " data-toggle="dropdown">
+        <i class="material-icons">account_circle</i>
+           <p> Usuario </p>
+            
+              </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a>Ver Perfil</a></li>
+            <li class="divider"></li>
+            <li><a routerLink="/login">Cerrar Sesión</a></li>
+          </ul>
+        </li>
+        >>>>>>> 28b6ac91237e6c5ea524d13f09ff62ca9ab49346
       </ul>
     </div>
-    <!-- /.navbar-collapse -->
   </div>
-  <!-- /.container-fluid -->
+
 </nav>
-
-
-<!--
-    <nav class="cyan">
-      <div class="nav-wrapper">
-        <a class="brand-logo"><img src="/assets/image/logo.png" width="60">   </a>
-        <button class="sidebar-collapse hide-on-large-only collapseButton" materialize="sideNav" [materializeParams]="[{edge: right,draggable: true}]"
-          [materializeActions]="sideNavActions" data-activates="slide-out">
-                <i class="small material-icons">menu</i>
-     </button>
-
-        <a></a>
-        <ul class="right hide-on-med-and-down">
-
-          <li><a routerLink="/consultar-vehiculos" routerLinkActive="active">Consultar Vehiculos</a></li>
-          <li><a routerLink="/estado-cuenta" routerLinkActive="active">Estado Cuenta</a></li>
-          <li><a routerLink="/asociar-vehiculos" routerLinkActive="active">Asociar Vehiculos</a></li>
-          <li><a routerLink="/informacion-batch" routerLinkActive="active">Informacion Batch</a></li>
-        </ul>
-        <ul class="side-nav" id="slide-out">
-          <li><a routerLink="/consultar-vehiculos" routerLinkActive="active">Consultar Vehiculos</a></li>
-          <li><a routerLink="/estado-cuenta" routerLinkActive="active">Estado Cuenta</a></li>
-          <li><a routerLink="/asociar-vehiculos" routerLinkActive="active">Asociar Vehiculos</a></li>
-          <li><a routerLink="/informacion-batch" routerLinkActive="active">Informacion Batch</a></li>
-        </ul>
-      </div>
-    </nav> -->
-
-
 <router-outlet></router-outlet>
