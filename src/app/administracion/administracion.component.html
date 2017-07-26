@@ -1,2 +1,262 @@
 <app-home></app-home>
 <br>
+<div class="container-fluid">
+   <div class="container">
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item active">
+      <a class="nav-link active" data-toggle="tab" href="#usuario" role="tab">Usuario</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#administrador" role="tab">Administrador</a>
+    </li>
+  </ul>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane active" id="usuario" role="tabpanel">
+      <!--form -->
+      <form>
+
+        <div class="row">
+          <h2>Correo Usuario</h2>
+          <p> Formato Correo de aplicativo gestión de multas e impuestos:</p>
+          <div class="form-group">
+            <label for="asunto">Asunto :</label>
+            <input class="form-control" rows="10" [(ngModel)]="subject" name="subject">
+          </div>
+          <div class="form-group">
+            <label for="cuerpo_correo">Correo Usuario:</label>
+            <textarea class="form-control" rows="10" [(ngModel)]="mail_body" name="mail_body"></textarea>
+          </div>
+          <hr />
+        </div>
+        <div class="row">
+          <h2>Intervalo de Envio</h2>
+          <p> Seleccione el intervalo de tiempo para enviar automaticamente el correo:</p>
+          <div class="form-group ">
+            <div class="col-md-2 col-sm-2 col-lg-2">
+              <div class="radio">
+                <label>
+              <input type="radio"  [(ngModel)]="intervalo" name="intervalo" value="diario" />Diario</label>
+              </div>
+              <div class="radio">
+                <label>
+              <input type="radio" [(ngModel)]="intervalo" name="intervalo" value="semanal" />Semanal </label>
+              </div>
+              <div class="radio">
+                <label>
+              <input type="radio" [(ngModel)]="intervalo" name="intervalo" value="mensual" />Mensual </label>
+              </div>
+              <div class="radio">
+                <label>
+              <input type="radio" [(ngModel)]="intervalo" name="intervalo" value="anual" />Anual </label>
+              </div>
+            </div>
+            <div *ngIf="intervalo==='diario'" class="col-md-10 col-sm-10 col-lg-10">
+              <br> <br>
+              <div class="form-group form-inline" style="white-space:nowrap">
+                <label class="checkbox-inline" for="dias">Cada :</label>
+                <div class="input-group  ">
+                  <input id="dias" class="form-control" value="0" type="number">
+                </div>
+                <label class="checkbox-inline" for="dias"> Días</label>
+              </div>
+            </div>
+            <div *ngIf="intervalo==='semanal'" class="col-md-10 col-sm-10 col-lg-10">
+              <br>
+              <div class="form-group form-inline" style="white-space:nowrap">
+                <label class="checkbox-inline" for="dias">Repetir Cada :</label>
+                <div class="input-group  ">
+                  <input id="dias" class="form-control" value="0" type="number">
+                </div>
+                <label class="checkbox-inline" for="dias"> Semanas el:</label>
+              </div>
+              <div>
+                <label class="checkbox-inline"><input type="checkbox" value="">Lunes</label>
+                <label class="checkbox-inline"><input type="checkbox" value="">Martes</label>
+                <label class="checkbox-inline"><input type="checkbox" value="">Miercoles</label>
+                <label class="checkbox-inline"><input type="checkbox" value="">Jueves</label>
+                <label class="checkbox-inline"><input type="checkbox" value="">Viernes</label>
+                <label class="checkbox-inline"><input type="checkbox" value="">Sabados</label>
+                <label class="checkbox-inline"><input type="checkbox" value="">Domingos</label>
+              </div>
+            </div>
+            <div *ngIf="intervalo==='mensual'" class="form-inline col-md-10 col-sm-10 col-lg-10">
+              <br>
+              <div class="radio ">
+                <label for="radio_mensual_1">
+              <input type="radio"   [(ngModel)]="radio_mensual" id="radio_mensual_1" name="radio_mensual" value="diario" />
+              Dia
+               <div class="form-group" style="white-space:nowrap">
+                <div class="input-group  ">
+                  <input value="1" id="mensual_dias" class="form-control  " type="number">
+                </div>
+                <label for="mensual_dias"> de  cada</label>
+                <div class="input-group  ">
+                  <input value="1" id="mensual_dias" class="form-control  " type="number">
+                </div>
+                <label for="mensual_dias"> Meses</label>
+              </div>
+              </label>
+            </div>
+            <br><br>
+            <div class="radio">
+              <label>
+              <input type="radio" [(ngModel)]="radio_mensual"  id="radio_mensual_2"  name="radio_mensual" value="semanal" />
+              El
+              <select name="tipo_identificacion" class="form-control selectpicker">
+              <option value="" selected="true">Seleccione</option>
+              <option value="Cedula de Ciudadanía">Primer</option>
+              <option value="Cédula de Extranjería">Segundo</option>
+              <option value="Carné Diplomatico">Tercer</option>
+              <option value="Carné Diplomatico">Cuarto</option>
+            </select>
+            <select name="tipo_identificacion" class="form-control selectpicker">
+              <option value="" selected="true">Seleccione</option>
+              <option value="Cedula de Ciudadanía">Lunes</option>
+              <option value="Cédula de Extranjería">Martes</option>
+              <option value="Carné Diplomatico">Miercoles</option>
+              <option value="Carné Diplomatico">Jueves</option>
+              <option value="Carné Diplomatico">Viernes</option>
+              <option value="Carné Diplomatico">Sabado</option>
+              <option value="Carné Diplomatico">Domingo</option>
+            </select>
+              <label for="mensual_dias"> de  cada</label>
+              <div class="input-group  ">
+                <input value="1" id="mensual_dias" class="form-control  " type="number">
+              </div>
+              <label for="mensual_dias"> Meses</label>
+              </label>
+            </div>
+          </div>
+          <div *ngIf="intervalo==='anual'" class="form-inline col-md-10 col-sm-10 col-lg-10">
+            <br>
+            <div class="radio ">
+              <label for="radio_anual_1">
+              <input type="radio"   [(ngModel)]="radio_anual" id="radio_mensual_1" name="radio_anual" value="diario" />
+             El
+               <div class="form-group" style="white-space:nowrap">
+              <div class="input-group  ">
+                <input value="20 de julio" id="mensual_dias" class="form-control" type="text">
+              </div>
+            </div>
+            </label>
+            </div>
+            <br><br>
+            <div class="radio">
+              <label>
+              <input type="radio" [(ngModel)]="radio_anual"  id="radio_mensual_2"  name="radio_anual" value="semanal" />
+              El
+              <select name="tipo_identificacion" class="form-control selectpicker">
+              <option value="" selected="true">Seleccione</option>
+              <option value="Cedula de Ciudadanía">Primer</option>
+              <option value="Cédula de Extranjería">Segundo</option>
+              <option value="Carné Diplomatico">Tercer</option>
+              <option value="Carné Diplomatico">Cuarto</option>
+            </select>
+            <select name="tipo_identificacion" class="form-control selectpicker">
+              <option value="" selected="true">Seleccione</option>
+              <option value="Cedula de Ciudadanía">Lunes</option>
+              <option value="Cédula de Extranjería">Martes</option>
+              <option value="Carné Diplomatico">Miercoles</option>
+              <option value="Carné Diplomatico">Jueves</option>
+              <option value="Carné Diplomatico">Viernes</option>
+            </select>
+              <label for="mensual_dias"> de </label>
+              <select name="tipo_identificacion" class="form-control selectpicker">
+              <option value="" selected="true">Seleccione</option>
+              <option value="Cedula de Ciudadanía">Enero</option>
+              <option value="Cédula de Extranjería">Febero</option>
+              <option value="Carné Diplomatico">Marzo</option>
+              <option value="Carné Diplomatico">Abril</option>
+              <option value="Carné Diplomatico">Marzo</option>
+              <option value="Carné Diplomatico">Mayo</option>
+              <option value="Carné Diplomatico">Junio</option>
+              <option value="Carné Diplomatico">Julio</option>
+              <option value="Carné Diplomatico">Agosto</option>
+              <option value="Carné Diplomatico">Septiembre</option>
+              <option value="Carné Diplomatico">Octubre</option>
+              <option value="Carné Diplomatico">Noviembre</option>
+              <option value="Carné Diplomatico">Diciembre</option>
+            </select>
+              </label>
+            </div>
+          </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+      <h2>Intervalo de Repetición</h2>
+      <p> Seleccione el intervalo de repeticón:</p>
+      <div class="form-group ">
+        <div class="col-md-4 col-sm-4 col-lg-4">
+          <select name="tipo_identificacion" class="form-control selectpicker">
+              <option value="" selected="true">jue 20/07/17</option>
+              <option value="Cedula de Ciudadanía">Vier 21/07/17</option>
+              <option value="Cédula de Extranjería">Sab 22/07/17</option>
+              <option value="Carné Diplomatico">Dom 23/07/17</option>
+              <option value="Carné Diplomatico">Lun 24/07/17</option>
+            </select>
+        </div>
+        <div class="col-md-8 col-sm-8 col-lg-8">
+          <div class="radio ">
+            <div class="col-md-4 col-sm-4 col-lg-4">
+              <input type="radio" [(ngModel)]="radio_mensual" id="radio_mensual_1" name="radio_mensual" value="diario" />              Terminar despues de :
+            </div>
+            <div class=" form-inline col-md-8 col-sm-8 col-lg-8">
+              <div class="form-group" style="white-space:nowrap">
+                <div class="input-group  ">
+                  <input value="0" id="mensual_dias" class="form-control  " type="number">
+                </div>
+                <label for="mensual_dias"> Veces</label>
+              </div>
+            </div>
+          </div>
+          <br><br>
+          <div class="radio">
+            <div class="col-md-4 col-sm-4 col-lg-4">
+              <input type="radio" [(ngModel)]="radio_mensual" id="radio_mensual_2" name="radio_mensual" value="semanal" />   
+               Terminar el :
+            </div>
+            <div class="col-md-8 col-sm-8 col-lg-8">
+              <select name="tipo_identificacion" class="form-control selectpicker">
+              <option value="" selected="true">jue 20/07/17</option>
+              <option value="Cedula de Ciudadanía">Vier 21/07/17</option>
+              <option value="Cédula de Extranjería">Sab 22/07/17</option>
+              <option value="Carné Diplomatico">Dom 23/07/17</option>
+              <option value="Carné Diplomatico">Lun 24/07/17</option>
+            </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button (click)="guardarPlantilla()" class="btn btn-primary">Guardar <span></span></button>
+      </div>
+    </div>
+    </form>
+    <hr />
+    <!--form -->
+  </div>
+  <div class="tab-pane" id="administrador" role="tabpanel">
+    <h2>Correo Administrador</h2>
+    <p> Formato Correo de aplicativo gestión de multas e impuestos:</p>
+    <form>
+      <div class="form-group">
+        <label for="asunto">Asunto :</label>
+        <input class="form-control" rows="10" [(ngModel)]="subject" name="subject">
+      </div>
+      <div class="form-group">
+        <label for="cuerpo_correo">Correo Administrador:</label>
+        <textarea class="form-control" rows="10" [(ngModel)]="mail_body" name="mail_body"></textarea>
+      </div>
+      <div class="form-group">
+        <button (click)="guardarPlantilla()" class="btn btn-primary">Guardar Plantilla <span></span></button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+<br>
+<br>
+<br>

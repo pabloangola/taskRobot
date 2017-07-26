@@ -36,6 +36,7 @@ import { NvD3Component } from 'ng2-nvd3';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DetalleNotificacionesComponent } from './detalle-notificaciones/detalle-notificaciones.component';
 import { DetalleInfraccionesService } from './services/detalle-infracciones.service';
+import { PlantillaCorreoService } from './services/plantilla-correo.service';
 import { ImpuestoService } from './services/impuesto.service';
 import { AdministracionComponent } from './administracion/administracion.component';
 
@@ -122,7 +123,7 @@ export function highchartsFactory() {
     NgxPaginationModule,
     NgPipesModule,
     InfiniteScrollModule],
-  providers: [AuthService, ComparendoService, EmailService, TelefonoService, JwtService, VehiculosService,
+  providers: [AuthService, ComparendoService, EmailService, TelefonoService, JwtService, PlantillaCorreoService,  VehiculosService,
     {
       provide: HighchartsStatic,
       useFactory: highchartsFactory
