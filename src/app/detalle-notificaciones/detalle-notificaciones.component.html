@@ -1,3 +1,127 @@
-<p>
-  detalle-notificaciones works!
-</p>
+<app-home></app-home>
+<form>
+  <div class="container">
+    <div class="row">
+      <h4 class="col-md-12 col-sm-12 col-lg-12 col-xs-12">{{tipo}}: <b>{{id}}</b></h4>
+    </div>
+    <div class="row" *ngIf="impuesto != null">
+      <div class="col-md-12">
+        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6 padding white-background">
+          <p><b>Fecha de Presentacion: </b> {{impuesto.fechaPresentacion}}</p>
+          <p><b>Estado: </b> {{impuesto.estado == "SIN PAGO" ? 'Pendiente' : 'Pago'}}</p>
+          <p><b>Vigencia: </b> {{impuesto.vigencia}} </p>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="comparendo != null">
+      <div class="col-md-12">
+        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6 padding white-background">
+          <p><b>Fecha de radicacion: </b> {{comparendo.fecha | date:'dd/MM/yyyy'}}</p>
+          <p><b>Estado: </b> {{comparendo.estado}}</p>
+          <p><b>Ubicacion: </b> {{comparendo.direccion}} </p>
+          <p><b>Secretaria: </b> {{comparendo.secretaria}} </p>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 search-results" infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="15">
+        <table class="table table-bordered table-responsive">
+          <thead>
+            <tr class="bg-primary">
+              <th colspan="4">
+                Notificaciones
+              </th>
+            </tr>
+            <tr class="bg-primary">
+              <th>
+                Fecha
+              </th>
+              <th>
+                Tipo
+              </th>
+              <th>
+                Recibido
+              </th>
+              <th>
+                Contacto
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                2017/04/20
+              </td>
+              <td>
+                Telefono
+              </td>
+              <td>
+                <i class="material-icons">smartphone</i>
+              </td>
+              <td>
+                3215841544
+              </td>
+            </tr>
+            <tr>
+              <td>
+                2017/05/20
+              </td>
+              <td>
+                Email
+              </td>
+              <td>
+                <i class="material-icons">drafts</i>
+              </td>
+              <td>
+                correo@correo.com
+              </td>
+            </tr>
+            <tr>
+              <td>
+                2017/06/20
+              </td>
+              <td>
+                Email
+              </td>
+              <td>
+                <i class="material-icons">mail</i>
+              </td>
+              <td>
+                aaaaa@aaaaa.aaa
+              </td>
+            </tr>
+            <tr>
+              <td>
+                2017/07/20
+              </td>
+              <td>
+                Telefono
+              </td>
+              <td>
+                <i class="material-icons">phonelink_erase</i>
+              </td>
+              <td>
+                3215841544
+              </td>
+            </tr>
+            <tr>
+              <td>
+                2017/08/20
+              </td>
+              <td>
+                Email
+              </td>
+              <td>
+                <i class="material-icons">drafts</i>
+              </td>
+              <td>
+                3215841544
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</form>

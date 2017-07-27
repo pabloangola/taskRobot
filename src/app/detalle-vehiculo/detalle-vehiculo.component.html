@@ -5,7 +5,7 @@
       <h4 class="col-md-12 col-sm-12 col-lg-12 col-xs-12">Vehiculo: <b>{{placa}}</b></h4>
     </div>
     <ngb-alert [dismissible]="false" type="warning" *ngIf="errorVehiculo">
-      <i class="material-icons filter-icon">warning</i> No se ha podido consultar la informacion del usuario.
+      <i class="material-icons filter-icon">warning</i> No se posee informacion del usuario.
     </ngb-alert>
     <div class="row" *ngIf="vehiculo != null">
       <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
@@ -30,11 +30,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let comparendo of comparendos">
+            <tr *ngFor="let comparendo of comparendos" class="white-background">
               <td>
                 <div class="row">
                   <div class="col-sm-5 col-xs-12 col-md-5 col-lg-5">
-                    <!--{{comparendo.codigo}} -->
                     <p><b>Codigo:</b> {{comparendo.numero}}</p>
                     <p><b>Valor:</b> $ {{comparendo.total | number:'.2-2'}}</p>
                     <p><b>Estado:</b> {{comparendo.estado}}</p>
@@ -44,7 +43,7 @@
                     <p><b>Descripcion:</b> Presentar licencia de conducción adulterada o ajena, lo cual dará lugar a la inmovilización del vehículo.</p>
                   </div>
                   <div class="col-sm-3 col-xs-12 col-md-3 col-lg-3">
-                    <button class="btn btn-primary pull-right col-xs-12 col-md-3 col-sm-3 col-lg-3" (click)="detalleNotificaciones(comparendo.numero)">
+                    <button class="btn btn-primary pull-right col-xs-12 col-md-3 col-sm-3 col-lg-3" (click)="detalleNotificaciones(comparendo.numero,'Multa',placa)">
                       <i class="material-icons filter-icon">search</i>
                     </button>
                   </div>
@@ -75,7 +74,7 @@
                     <p><b>Fecha:</b> {{impuesto.fechaPresentacion}} </p>
                   </div>
                   <div class="col-sm-3 col-xs-12 col-md-3 col-lg-3">
-                    <button class="btn btn-primary pull-right col-xs-12 col-md-3 col-sm-3 col-lg-3">
+                    <button class="btn btn-primary pull-right col-xs-12 col-md-3 col-sm-3 col-lg-3" (click)="detalleNotificaciones(impuesto.nroReferencia,'Impuesto',placa)">
                       <i class="material-icons filter-icon">search</i>
                     </button>
                   </div>

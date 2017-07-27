@@ -9,7 +9,7 @@ export class VehiculosService {
 
   constructor(private http: Http) { }
 
-  urlBase = "http://192.168.1.70:8082"
+  urlBase = "http://35.197.37.143:8080"
 
   listarVehiculos(params): Observable<Vehiculo[]> {
   // let token = localStorage.getItem('customToken');

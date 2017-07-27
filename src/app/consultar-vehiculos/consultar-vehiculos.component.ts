@@ -13,6 +13,7 @@ import { Subject } from 'rxjs/Subject';
 import { debounceTime } from 'rxjs/operator/debounceTime';
 import { Impuesto, DetallesImpuesto } from '../dto/impuesto';
 import { ImpuestoService } from '../services/impuesto.service';
+import { IMyDpOptions } from 'mydatepicker';
 
 @Component({
   selector: 'app-consultar-vehiculos',
@@ -28,6 +29,10 @@ export class ConsultarVehiculosComponent implements OnInit {
     private smsService: TelefonoService,
     private impuestoService: ImpuestoService) { }
 
+  private myDatePickerOptions: IMyDpOptions = {
+    dateFormat: 'dd/mm/yyyy',
+  };
+
   vehiculos: Vehiculo[] = [];
   comparendosVisibles: Comparendo[] = [];
   totalPonderado: number = 0;
@@ -42,6 +47,11 @@ export class ConsultarVehiculosComponent implements OnInit {
   filterValues = [];
   taxFlag: boolean = false;
   fineFlag: boolean = false;
+  isCollapsed: boolean = false;
+  fechaInicio;
+  fechaFin;
+  cuidad = "";
+  prioridad = "";
 
   ngOnInit() {
     let body = {};
@@ -114,6 +124,57 @@ export class ConsultarVehiculosComponent implements OnInit {
     });
   }
 
+  filtrarValores() {
+    this.vehiculos = [];
+    this.vehiculosTotales.forEach(vehiculo => {
+      if (this.cuidad != "") {
+        if (this.filtrarCiudad(vehiculo)) {
+          if (this.prioridad != "") {
+            if (vehiculo.priority != null) {
+              if (this.filtrarPrioridad(vehiculo)) {
+                this.vehiculos.push(vehiculo);
+              }
+            }
+          } else {
+            this.vehiculos.push(vehiculo);
+          }
+        }
+      } else if (this.prioridad != "") {
+        if (vehiculo.priority != null) {
+          if (this.filtrarPrioridad(vehiculo)) {
+            this.vehiculos.push(vehiculo);
+          }
+        }
+      }
+      else{
+        this.vehiculos.push(vehiculo);
+      }
+    });
+  }
+
+  filtrarCiudad(vehiculo) {
+    return vehiculo.financeSecretariat != null && vehiculo.financeSecretariat == this.cuidad;
+  }
+  filtrarPrioridad(vehiculo) {
+    if (vehiculo.priority > 3 && this.prioridad == "Alta") {
+      return true;
+    }
+    if (vehiculo.priority <= 3 && vehiculo.priority > 1 && this.prioridad == "Media") {
+      return true;
+    }
+    if (vehiculo.priority <= 1 && this.prioridad == "Media") {
+      return true;
+    }
+  }
+  filtrarFechas(vehiculo) {
+    return true;
+  }
+
+  reset() {
+    this.cuidad = "";
+    this.prioridad = "";
+  }
+
   purgarVehiculos() {
     if (this.taxFlag && this.fineFlag) {
       var index: number = 0;
@@ -134,7 +195,92 @@ export class ConsultarVehiculosComponent implements OnInit {
         }
       });
       this.vehiculosTotales.push.apply(this.vehiculosTotales, this.vehiculos);
+      this.establecerPrioridad();
     }
+  }
+
+  establecerPrioridad() {
+    this.vehiculos.forEach(vehiculo => {
+      if (vehiculo.priority == null) {
+        vehiculo.priority = 0;
+      }
+      if (vehiculo.taxes != null) {
+        vehiculo.taxes.forEach(impuesto => {
+          let hoy = new Date();
+          let semanaSiguiente = new Date(hoy.getDate() + 7);
+          let mesSiguiente = new Date(hoy.getDate() + 30);
+          let semanaPasada = new Date(hoy.getDate() - 7);
+          let mesPasado = new Date(hoy.getDate() - 30);
+          let anioPasado = new Date(hoy.getDate() - 365);
+          let dosAnios = new Date(hoy.getDate() - (365 * 2));
+          let tresAnios = new Date(hoy.getDate() - (365 * 3));
+          let fechaDePago = new Date(impuesto.fechaPresentacion);
+
+          if (fechaDePago <= tresAnios) {
+            vehiculo.priority += 8;
+          }
+          else if (fechaDePago <= dosAnios) {
+            vehiculo.priority += 7;
+          }
+          else if (fechaDePago <= anioPasado) {
+            vehiculo.priority += 6;
+          }
+          else if (fechaDePago <= mesPasado) {
+            vehiculo.priority += 5;
+          }
+          else if (fechaDePago <= semanaPasada) {
+            vehiculo.priority += 4;
+          }
+          else if (fechaDePago <= hoy) {
+            vehiculo.priority += 3;
+          }
+          else if (fechaDePago <= semanaSiguiente) {
+            vehiculo.priority += 2;
+          }
+          else if (fechaDePago <= mesSiguiente) {
+            vehiculo.priority += 1;
+          }
+        });
+      }
+      if (vehiculo.fines != null) {
+        vehiculo.fines.forEach(multa => {
+          let hoy = new Date();
+          let semanaSiguiente = new Date(hoy.getDate() + 7);
+          let mesSiguiente = new Date(hoy.getDate() + 30);
+          let semanaPasada = new Date(hoy.getDate() - 7);
+          let mesPasado = new Date(hoy.getDate() - 30);
+          let anioPasado = new Date(hoy.getDate() - 365);
+          let dosAnios = new Date(hoy.getDate() - (365 * 2));
+          let tresAnios = new Date(hoy.getDate() - (365 * 3));
+          let fechaComparendo = multa.fecha;
+
+          if (fechaComparendo <= tresAnios) {
+            vehiculo.priority += 8;
+          }
+          else if (fechaComparendo <= dosAnios) {
+            vehiculo.priority += 7;
+          }
+          else if (fechaComparendo <= anioPasado) {
+            vehiculo.priority += 6;
+          }
+          else if (fechaComparendo <= mesPasado) {
+            vehiculo.priority += 5;
+          }
+          else if (fechaComparendo <= semanaPasada) {
+            vehiculo.priority += 4;
+          }
+          else if (fechaComparendo <= hoy) {
+            vehiculo.priority += 3;
+          }
+          else if (fechaComparendo <= semanaSiguiente) {
+            vehiculo.priority += 2;
+          }
+          else if (fechaComparendo <= mesSiguiente) {
+            vehiculo.priority += 1;
+          }
+        });
+      }
+    });
   }
 
   notificarComparendos() {
@@ -198,7 +344,7 @@ export class ConsultarVehiculosComponent implements OnInit {
     this.purgarVehiculos();
   }
 
-  agregarVehiculo(){
+  agregarVehiculo() {
     this.router.navigate(['/agregar-vehiculo']);
   }
 }

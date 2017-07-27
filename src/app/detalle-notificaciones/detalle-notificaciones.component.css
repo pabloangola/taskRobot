@@ -1,0 +1,9 @@
+.border{
+    border: 1px solid black;
+}
+.padding{
+    padding: 10px;
+}
+.white-background{
+    background-color: #f9f9f9;
+}

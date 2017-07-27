@@ -29,7 +29,7 @@ export class DetalleVehiculoComponent implements OnInit {
   impuestos: DetallesImpuesto[] = [];
 
   ngOnInit() {
-    var sub = this.route.params.subscribe(params => {
+    this.route.params.subscribe(params => {
       this.placa = params['placa'];
       var comparendoRequest: ComparendoRequest = new ComparendoRequest();
       comparendoRequest.numero = "8909039388";
@@ -60,7 +60,7 @@ export class DetalleVehiculoComponent implements OnInit {
       });
     });
   }
-  detalleNotificaciones(comparendo) {
-    this.router.navigate(['/detalle-notificacion', comparendo]);
+  detalleNotificaciones(comparendo,tipo,placa) {
+    this.router.navigate(['/detalle-notificacion', placa , tipo ,comparendo]);
   }
 }

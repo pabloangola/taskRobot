@@ -1,0 +1,120 @@
+<app-home></app-home>
+<div class="container justify-content-md-center justify-content-sm-center justify-content-lg-center center-align">
+  <div class="row">
+    <h4 class="col-xs-12 col-md-12 col-sm-12 col-lg-12">Notificaciones</h4>
+
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 search-results" infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="15">
+      <table class="table table-striped table-center table-responsive">
+        <thead>
+          <tr class="bg-primary">
+            <td colspan="7">
+              <div class="row">
+                <div class="col-md-6 col-sm-5 col-lg-6 col-xs-3">
+                  <h4>Filtros</h4>
+                </div>
+                <div class="col-md-5 col-sm-4 col-lg-5 col-xs-7">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Busqueda por Identificador" (keyup)="filtrarTabla(this.value)" name="filtro"
+                      [(ngModel)]="filtro" maxlength="6">
+                    <span class="input-group-addon" id="basic-addon1"><i class="material-icons filter-icon">search</i></span>
+                  </div>
+                </div>
+                <div class="col-md-1 col-sm-3 col-lg-1 col-xs-2 pull-right">
+                  <button class="btn btn-primary" (click)="isCollapsed = !isCollapsed">
+                    <i class="material-icons filter-icon">filter_list</i>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr *ngIf="isCollapsed">
+            <td colspan="7">
+              <div class="row">
+                <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12">
+                  <select class="form-control">
+                    <option disabled selected>
+                      Tipo
+                    </option>
+                    <option>
+                      Impuesto
+                    </option>
+                    <option>
+                      Vehiculo
+                    </option>
+                  </select>
+                </div>
+                <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12">
+                  <select class="form-control">
+                    <option disabled selected>
+                      Estado
+                    </option>
+                    <option>
+                      Pendiente
+                    </option>
+                    <option>
+                      Confirmada
+                    </option>
+                    <option>
+                      En Proceso
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr class="bg-primary">
+            <th>
+              Codigo
+            </th>
+            <th>
+              Placa
+            </th>
+            <th>
+              Tipo
+            </th>
+            <th>
+              N° de Notificaciones
+            </th>
+            <th colspan="2">
+              Resumen
+            </th>
+            <th>
+              Estado
+            </th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let notificacion of notificaciones">
+          <tr>
+            <td>
+              {{notificacion.identificador}}
+            </td>
+            <td>
+              {{notificacion.vehiculo.licensePlate}}
+            </td>
+            <td>
+              {{notificacion.tipo}}
+            </td>
+            <td>
+              <i class="material-icons">smartphone</i>{{notificacion.numeroNotificacionesTelefono}}  
+              <i class="material-icons">mail</i>{{notificacion.numeroNotificacionesEmail}}
+            </td>
+            <td>
+              <i class="material-icons">phonelink_erase</i> {{notificacion.numeroNotificacionesTelefono - notificacion.notificacionesRecibidasTelefono}}
+              <i class="material-icons">smartphone</i>{{notificacion.notificacionesRecibidasTelefono}}
+            </td>
+            <td>  
+              <i class="material-icons">mail</i>{{notificacion.numeroNotificacionesEmail - notificacion.notificacionesRecibidasEmail}} 
+              <i class="material-icons">drafts</i>{{notificacion.notificacionesRecibidasEmail}}
+            </td>
+            <td>
+              Pendiente
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <br>
+</div>

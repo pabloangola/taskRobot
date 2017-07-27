@@ -7,6 +7,7 @@ export class Vehiculo {
     fines: Comparendo[];
     taxes: DetallesImpuesto[];
     duesLength:number;
+    priority:number;
 }
 
 export class Customer {

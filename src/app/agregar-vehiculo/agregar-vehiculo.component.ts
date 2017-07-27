@@ -45,16 +45,6 @@ export class AgregarVehiculoComponent implements OnInit {
 
     var vehiculo = new Vehiculo();
 
-   /* vehiculo.licensePlate = "RMX202";
-    vehiculo.financeSecretariat = "Bogotá D.C";
-    vehiculo.customer = new Customer;
-    vehiculo.customer.idType = "Cédula de Ciudadanía";
-    vehiculo.customer.idNumber = "1020715321";
-    vehiculo.customer.firstName = "Pepito";
-    vehiculo.customer.surname = "Perez";
-    vehiculo.customer.email = "pablo.angola@aossas.com";
-    vehiculo.customer.cellPhone = "3214567777";*/
-
     vehiculo.licensePlate = this.placa;
     vehiculo.financeSecretariat = this.lugar_expedicion;
     vehiculo.customer = new Customer;
@@ -67,12 +57,10 @@ export class AgregarVehiculoComponent implements OnInit {
 
     this.vehiculos.push(vehiculo);
     this.vehiculosService.agregarVehiculo(this.vehiculos).subscribe(
-      error => console.error(error)
+      error => console.error(error),
+      res => {this._success.next('Vehiculo almacenado correctamente.');} 
     );
-    this._success.next('Vehiculo almacenado correctamente.');
+    
 
   }
-
-
-  
 }

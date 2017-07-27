@@ -30,8 +30,6 @@ import 'nvd3';
 
 import { ChartModule } from 'angular2-highcharts';
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
-//import { Ng2FileInputModule } from 'ng2-file-input';
-//Ng2FileInputModule.forRoot(),
 import { NvD3Component } from 'ng2-nvd3';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DetalleNotificacionesComponent } from './detalle-notificaciones/detalle-notificaciones.component';
@@ -39,6 +37,8 @@ import { DetalleInfraccionesService } from './services/detalle-infracciones.serv
 import { PlantillaCorreoService } from './services/plantilla-correo.service';
 import { ImpuestoService } from './services/impuesto.service';
 import { AdministracionComponent } from './administracion/administracion.component';
+import { NotificacionesComponent } from './notificaciones/notificaciones.component';
+import { MyDatePickerModule } from 'mydatepicker';
 
 const appRoutes: Routes = [
   {
@@ -74,8 +74,12 @@ const appRoutes: Routes = [
     component: AdministracionComponent
   },
   {
-    path: 'detalle-notificacion/:id',
+    path: 'detalle-notificacion/:placa/:tipo/:id',
     component: DetalleNotificacionesComponent
+  },
+  {
+    path: 'notificaciones',
+    component: NotificacionesComponent
   },
   {
     path: '',
@@ -107,7 +111,8 @@ export function highchartsFactory() {
     DashboardComponent,
     NvD3Component,
     DetalleNotificacionesComponent,
-    AdministracionComponent
+    AdministracionComponent,
+    NotificacionesComponent
   ],
   imports: [
     ChartModule,
@@ -122,8 +127,10 @@ export function highchartsFactory() {
     NgbModule.forRoot(),
     NgxPaginationModule,
     NgPipesModule,
-    InfiniteScrollModule],
-  providers: [AuthService, ComparendoService, EmailService, TelefonoService, JwtService, PlantillaCorreoService,  VehiculosService,
+    InfiniteScrollModule,
+    MyDatePickerModule
+  ],
+  providers: [AuthService, ComparendoService, EmailService, TelefonoService, JwtService, VehiculosService,PlantillaCorreoService,
     {
       provide: HighchartsStatic,
       useFactory: highchartsFactory
